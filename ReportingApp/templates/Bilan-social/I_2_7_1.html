@@ -1,0 +1,114 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.7.Par tranche d'age: <br>
+2.7.1.Par tranche d'age et par genre:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_7_1 %}"active"{% endblock %}
+{% block content %}
+Au {{today}}, l'age moyen de toutes catégories professionnelles confondues est de {{Average_Age_years}} et
+{{Average_Age_Months}} mois.<br />
+<br />
+<div class="w3-container">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color: #87ceeb;">
+                <th scope="col">Tranche d'age</th>
+                <th scope="col">Hommes</th>
+                <th scope="col">%</th>
+                <th scope="col">Femmes</th>
+                <th scope="col">%</th>
+                <th scope="col">Total</th>
+                <th scope="col">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">25-29 ans</th>
+                <td>{{ Age_Groupes_Hommes.0 }}</td>
+                <td>{{ HPercent.0 }}</td>
+                <td>{{ Age_Groupes_Femmes.0 }}</td>
+                <td>{{ FPercent.0 }}</td>
+                <td>{{ Genre_Total_By_Group.0 }}</td>
+                <td>{{ TPercent_By_Group.0 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">30-34 ans</th>
+                <td>{{ Age_Groupes_Hommes.1 }}</td>
+                <td>{{ HPercent.1 }}</td>
+                <td>{{ Age_Groupes_Femmes.1 }}</td>
+                <td>{{ FPercent.1 }}</td>
+                <td>{{ Genre_Total_By_Group.1 }}</td>
+                <td>{{ TPercent_By_Group.1 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">35-39 ans</th>
+                <td>{{ Age_Groupes_Hommes.2 }}</td>
+                <td>{{ HPercent.2 }}</td>
+                <td>{{ Age_Groupes_Femmes.2 }}</td>
+                <td>{{ FPercent.2 }}</td>
+                <td>{{ Genre_Total_By_Group.2 }}</td>
+                <td>{{ TPercent_By_Group.2 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">40-44 ans</th>
+                <td>{{ Age_Groupes_Hommes.3 }}</td>
+                <td>{{ HPercent.3 }}</td>
+                <td>{{ Age_Groupes_Femmes.3 }}</td>
+                <td>{{ FPercent.3 }}</td>
+                <td>{{ Genre_Total_By_Group.3 }}</td>
+                <td>{{ TPercent_By_Group.3 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">45-49 ans</th>
+                <td>{{ Age_Groupes_Hommes.4 }}</td>
+                <td>{{ HPercent.4 }}</td>
+                <td>{{ Age_Groupes_Femmes.4 }}</td>
+                <td>{{ FPercent.4 }}</td>
+                <td>{{ Genre_Total_By_Group.4 }}</td>
+                <td>{{ TPercent_By_Group.4 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">50-55 ans</th>
+                <td>{{ Age_Groupes_Hommes.5 }}</td>
+                <td>{{ HPercent.5 }}</td>
+                <td>{{ Age_Groupes_Femmes.5 }}</td>
+                <td>{{ FPercent.5 }}</td>
+                <td>{{ Genre_Total_By_Group.5 }}</td>
+                <td>{{ TPercent_By_Group.5 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">55 ans et+</th>
+                <td>{{ Age_Groupes_Hommes.6 }}</td>
+                <td>{{ HPercent.6 }}</td>
+                <td>{{ Age_Groupes_Femmes.6 }}</td>
+                <td>{{ FPercent.6 }}</td>
+                <td>{{ Genre_Total_By_Group.6 }}</td>
+                <td>{{ TPercent_By_Group.6 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">Total</th>
+                <td>{{ HTotal }}</td>
+                <td>100</td>
+                <td>{{ FTotal }}</td>
+                <td>100</td>
+                <td>{{ Total_p13 }}</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+
+
+
+{% if chart %}
+<center><img src="data:image/png;base64, {{chart|safe}}"></center>
+{% endif %}
+{% endblock %}

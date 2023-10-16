@@ -1,0 +1,372 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block title %} - Flux du personnel{% endblock %}
+{% block status_dashF %}"active"{% endblock %}
+{% block header %}
+Flux du personnel
+{% endblock %}
+{% block level %}
+Tableau de bord
+{% endblock %}
+{% block h %}
+    <style>
+    .wrapper5555 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 300px 300px;
+            gap: 10px;
+        }
+
+        .box15555 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .box25555 {
+            grid-column: 4 / 6;
+            grid-row: 1 / 2;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .box35555 {
+            grid-row: 2 / 3;
+            grid-column: 4 / 6;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        </style>
+{% endblock %}
+{% block content %}
+<div class="wrapper5555">
+    <div class="box15555">
+        <canvas id="chart8"></canvas>
+    </div>
+    <div class="box25555">
+        <canvas id="chart9"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart9type">Chart Type:</label>
+        <select id="chart9type" name="charts9" onchange="updateChart9Type()">
+            <option value="line">LineChart</option>
+            <option value="bar">BarChart</option>
+        </select>
+    </div>
+    <div class="box35555">
+        <canvas id="chart10"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart10type">Chart Type:</label>
+        <select id="chart10type" name="charts10" onchange="updateChart10Type()">
+            <option value="line">LineChart</option>
+            <option value="bar">BarChart</option>
+        </select>
+    </div>
+</div>
+<br><br>
+<div class="wrapper5555">
+    <div class="box15555">
+        <canvas id="chart11"></canvas>
+    </div>
+    <div class="box25555">
+        <canvas id="chart12"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart12type">Chart Type:</label>
+        <select id="chart12type" name="charts12" onchange="updateChart12Type()">
+            <option value="line">LineChart</option>
+            <option value="bar">BarChart</option>
+        </select>
+    </div>
+    <div class="box35555">
+        <canvas id="chart13"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart13type">Chart Type:</label>
+        <select id="chart13type" name="charts13" onchange="updateChart13Type()">
+            <option value="line">LineChart</option>
+            <option value="bar">BarChart</option>
+        </select>
+    </div>
+</div>
+<br/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+  <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
+
+  <script>
+  var config8 = {
+        type: 'bar',
+        data: {
+            datasets: [
+                {% for i, j in data_list %}
+                    {
+                        label: "{{j}}",
+                        data: {{ i|safe }}
+                    },
+                {% endfor %}
+            ],
+            labels: {{ labelsYear|safe }}
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                    stacked: true // this also..
+                }],
+            },
+            title: {
+                display: true,
+                text: 'Prévision des retraites par catégorie et nature du personnel',
+                
+            },
+            
+        }
+    };
+
+
+    var ctx8 = document.getElementById('chart8').getContext('2d');
+    myChart8= new Chart(ctx8, config8);
+
+    var config9 = {
+        type: 'line',
+        data: {
+            datasets: [
+                {
+                    label: "Cadre",
+                    data: {{ dataCadreRetr|safe }},
+                    backgroundColor: 
+                    'rgba(255, 99, 132, 0.8)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false,
+                },
+                {
+                    label: "Maitrise",
+                    data: {{ dataMaitriseRetr|safe }},
+                    backgroundColor: 
+                    'rgba(54, 162, 235, 0.8)',
+                    borderColor: 'rgb(54, 162, 235)',fill: false,
+                },
+                {
+                    label: "Execution",
+                    data: {{ dataExecutionRetr|safe }},
+                    backgroundColor: 
+                    
+                    'rgba(255, 205, 86, 0.8)',
+                    borderColor: 'rgb(255, 205, 86)',fill: false,
+                },
+                {
+                    label: "Execution_maitrise",
+                    data: {{ dataExecutionMaitriseRetr|safe }},
+                    backgroundColor: 
+                    
+                    'rgba(25, 20, 86, 0.8)',
+                    borderColor: 'rgb(25, 20, 86)',fill: false,
+                },
+            ],
+            labels: {{ labelsYear|safe }}
+        },
+        options: {
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                    stacked: true // this also..
+                }],
+            },
+            title: {
+                display: true,
+                text: 'Prévision des retraites par catégorie du personnel',
+                
+            },
+            
+        }
+    };
+
+
+    var ctx9 = document.getElementById('chart9').getContext('2d');
+    myChart9= new Chart(ctx9, config9);
+
+    function updateChart9Type() {
+                // Destroy the previous chart
+				myChart9.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart9 = new Chart(ctx9, {
+					type: document.getElementById("chart9type").value,  // Select chart type from dropdown
+					data: config9.data,
+                    options: config9.options
+				});
+			};
+
+
+    var config10 = {
+        type: 'line',
+        data: {
+            datasets: [
+            {
+                label: "Retraite",
+                data: {{ totalretr|safe }}
+            },
+            ],
+            labels: {{ labelsYear|safe }}
+        },
+        options: {
+            responsive: true,
+        }
+    };
+
+
+    var ctx10 = document.getElementById('chart10').getContext('2d');
+    myChart10 = new Chart(ctx10, config10);
+
+    function updateChart10Type() {
+                // Destroy the previous chart
+				myChart10.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart10 = new Chart(ctx10, {
+					type: document.getElementById("chart10type").value,  // Select chart type from dropdown
+					data: config10.data,
+                    options: config10.options
+				});
+			};
+    
+    var config11 = {
+        type: 'bar',
+        data: {
+            datasets: [
+                {% for i, j in data_list_recr %}
+                    {
+                        label: "{{j}}",
+                        data: {{ i|safe }}
+                    },
+                {% endfor %}
+            ],
+            labels: {{ labels2|safe }}
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                    stacked: true // this also..
+                }],
+            },
+            title: {
+                display: true,
+                text: 'Récrutements par catégorie et nature du personnel',
+                
+            },
+            
+        }
+    };
+
+
+    var ctx11 = document.getElementById('chart11').getContext('2d');
+    myChart11= new Chart(ctx11, config11);
+
+    var config12 = {
+        type: 'line',
+        data: {
+            datasets: [
+                {
+                    label: "Cadre",
+                    data: {{ dataCadre|safe }},
+                    backgroundColor: 
+                    'rgba(255, 99, 132, 0.8)',
+                    borderColor: 'rgb(255, 99, 132)',fill: false,
+                },
+                {
+                    label: "Maitrise",
+                    data: {{ dataMaitrise|safe }},
+                    backgroundColor: 
+                    'rgba(54, 162, 235, 0.8)',
+                    borderColor: 'rgb(54, 162, 235)',fill: false,
+                },
+                {
+                    label: "Execution",
+                    data: {{ dataExecution|safe }},
+                    backgroundColor: 
+                    
+                    'rgba(255, 205, 86, 0.8)',
+                    borderColor: 'rgb(255, 205, 86)',fill: false,
+                },
+                {
+                    label: "Execution_maitrise",
+                    data: {{ dataExecutionMaitrise|safe }},
+                    backgroundColor: 
+                    
+                    'rgba(25, 20, 86, 0.8)',
+                    borderColor: 'rgb(25, 20, 86)',fill: false,
+                },
+            ],
+            labels: {{ labels2|safe }}
+        },
+        options: {
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                    stacked: true // this also..
+                }],
+            },
+            title: {
+                display: true,
+                text: 'Récrutements par catégorie du personnel',
+                
+            },
+            
+        }
+    };
+
+
+    var ctx12 = document.getElementById('chart12').getContext('2d');
+    myChart12= new Chart(ctx12, config12);
+
+    function updateChart12Type() {
+                // Destroy the previous chart
+				myChart12.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart12 = new Chart(ctx12, {
+					type: document.getElementById("chart12type").value,  // Select chart type from dropdown
+					data: config12.data,
+                    options: config12.options
+				});
+			};
+
+    var config13 = {
+        type: 'line',
+        data: {
+            datasets: [
+                    {
+                        label: "Recrutement",
+                        data: {{ totalrecr|safe }}
+                    },
+            ],
+            labels: {{ labels2|safe }}
+        },
+        options: {
+            responsive: true,
+        }
+    };
+
+
+    var ctx13 = document.getElementById('chart13').getContext('2d');
+    myChart13 = new Chart(ctx13, config13);
+
+    function updateChart13Type() {
+                // Destroy the previous chart
+				myChart13.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart13 = new Chart(ctx13, {
+					type: document.getElementById("chart13type").value,  // Select chart type from dropdown
+					data: config13.data,
+                    options: config13.options
+				});
+			};
+
+</script>
+  {% endblock %}

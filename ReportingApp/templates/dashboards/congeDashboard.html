@@ -1,0 +1,333 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block title %} - Congé{% endblock %}
+{% block status_SC %}"active"{% endblock %}
+{% block header %}
+Congé
+{% endblock %}
+{% block level %}
+Tableau de bord
+{% endblock %}
+{% block h %}
+    <style>
+    .wrapper1111 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 260px 260px 690px;
+        gap: 10px;
+    }
+    .box1 {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .box2 {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .box3 {
+        grid-row: 1 / 3;
+        grid-column: 2 / 4;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .box4 {
+        grid-row: 3 / 4;
+        grid-column: 1 / 4;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    
+    </style>
+{% endblock %}
+{% block content %}
+<div class="wrapper1111">
+    <div class="box1">
+        <canvas id="chart1"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart1type">Chart Type:</label>
+        <select id="chart1type" name="charts1" onchange="updateChart1Type()">
+            <option value="pie" selected="True">PieChart</option>
+            <option value="line">LineChart</option>
+            <option value="bar">BarChart</option>
+        </select>
+    </div>
+    <div class="box2">
+        <canvas id="chart2"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart2type">Chart Type:</label>
+        <select id="chart2type" name="charts2" onchange="updateChart2Type()">
+            <option value="bar">BarChart</option>
+            <option value="line">LineChart</option>
+        </select>
+    </div>
+    
+    <div class="box3">
+    <br>
+        <canvas id="chart3"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart3type">Chart Type:</label>
+        <select id="chart3type" name="charts3" onchange="updateChart3Type()">
+            <option value="bar">BarChart</option>
+            <option value="line">LineChart</option>
+        </select>
+    </div>
+    <div class="box4">
+        <canvas id="chart4"></canvas><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="chart4type">Chart Type:</label>
+        <select id="chart4type" name="charts4" onchange="updateChart4Type()">
+            <option value="bar">BarChart</option>
+            <option value="line">LineChart</option>
+        </select>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+<script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
+
+<script>
+    
+    var config1 = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          label: 'Nombre des congés',
+          backgroundColor: 
+            ['rgba(255, 99, 132, 0.8)','rgba(54, 162, 235, 0.8)','rgba(255, 205, 86, 0.8)',],
+          borderColor: 'rgb(254,254,254)'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true,
+        plugins: {
+            colorschemes: {
+                scheme: 'tableau.HueCircle19'
+            },
+        },
+        title: {
+            display: true,
+            text: 'Nombre des congés par nature'
+        },
+    }};
+
+
+      var ctx1 = document.getElementById('chart1').getContext('2d');
+      myChart1 = new Chart(ctx1, config1);
+    
+
+      function updateChart1Type() {
+                // Destroy the previous chart
+				myChart1.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart1 = new Chart(ctx1, {
+					type: document.getElementById("chart1type").value,  // Select chart type from dropdown
+					data: config1.data,
+                    options: {title:{
+                        display: true,
+                        text: 'Nombre des congés par nature'
+                    }},
+				});
+			};
+
+var data2 = {
+  labels: {{ labels|safe }},
+  datasets: [
+    {
+      label: 'Femmes',
+      data:  {{dataF|safe}},
+      backgroundColor: 
+      'rgba(255, 99, 132, 0.8)',
+      borderColor: 'rgb(255, 99, 132)',
+      
+      
+    },
+    {
+      label: 'Hommes',
+      data:  {{dataM|safe}},
+      backgroundColor: 
+      
+      'rgba(54, 162, 235, 0.8)',
+      borderColor: 'rgb(54, 162, 235)',
+      
+    
+    }
+    ]
+};
+
+
+
+var config2 = {
+      type: 'bar',
+      data: data2,
+      options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Nature congé par genre du personnel'
+        },
+      }
+    };
+
+      var ctx2 = document.getElementById('chart2').getContext('2d');
+      myChart2 = new Chart(ctx2, config2);
+    
+
+      function updateChart2Type() {
+                // Destroy the previous chart
+				myChart2.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart2 = new Chart(ctx2, {
+					type: document.getElementById("chart2type").value,  // Select chart type from dropdown
+					data: config2.data,
+                    options: config2.options,
+          
+				});
+			};
+
+
+var data3 = {
+  labels: {{ labels|safe }},
+  datasets: [
+    {
+      label: 'Cadre',
+      data: {{dataCadre|safe}},
+      backgroundColor: 
+      'rgba(255, 99, 132, 0.8)',
+      borderColor:'rgb(255, 99, 132)',
+      
+    },
+    {
+      label: 'Maitrise',
+      data:  {{dataMaitrise|safe}},
+      backgroundColor: 
+      
+      'rgba(54, 162, 235, 0.8)',
+      borderColor:'rgb(54, 162, 235)',
+    
+    },
+
+    {
+      label: 'Execution',
+      data:  {{dataExecution|safe}},
+      backgroundColor: 
+      
+      'rgba(255, 205, 86, 0.8)',
+      borderColor:'rgb(255, 205, 86)',
+    
+    },  
+
+    {
+      label: 'Execution_Maitrise',
+      data:  {{dataExecution_Maitrise|safe}},
+      backgroundColor: 
+      
+      'rgba(25, 20, 86, 0.8)',
+      borderColor:'rgb(25, 20, 86)',
+    
+    },  
+     
+
+
+    ]
+};
+
+
+
+var config3 = {
+      type: 'bar',
+      data: data3,
+      options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Nature congé par catégorie du personnel'
+        },
+      }
+    };
+
+      var ctx3 = document.getElementById('chart3').getContext('2d');
+      myChart3 = new Chart(ctx3, config3);
+    
+
+      function updateChart3Type() {
+                // Destroy the previous chart
+				myChart3.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart3 = new Chart(ctx3, {
+					type: document.getElementById("chart3type").value,  // Select chart type from dropdown
+					data: config3.data,
+                    options: config3.options,
+				});
+			};
+
+    var data4 = {
+  labels: {{ labelsDirection|safe }},
+  datasets: [
+    {
+      label: 'Annuel',
+      data: {{dataAnnuel|safe}},
+      backgroundColor: 
+      'rgba(255, 99, 132, 0.8)',
+      borderColor:'rgb(255, 99, 132)',
+      
+    },
+    {
+      label: 'Recuperation',
+      data:  {{dataRecuperation|safe}},
+      backgroundColor: 
+      
+      'rgba(54, 162, 235, 0.8)',
+      borderColor:'rgb(54, 162, 235)',
+    
+    },
+
+    {
+      label: 'Exceptionnel',
+      data:  {{dataExceptionnel|safe}},
+      backgroundColor: 
+      
+      'rgba(255, 205, 86, 0.8)',
+      borderColor:'rgb(255, 205, 86)',
+    
+    },  
+
+    
+
+
+    ]
+};
+
+
+
+var config4 = {
+      type: 'bar',
+      data: data4,
+      options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Nature congé par direction'
+        },
+      }
+    };
+
+      var ctx4 = document.getElementById('chart4').getContext('2d');
+      myChart4 = new Chart(ctx4, config4);
+    
+
+      function updateChart4Type() {
+                // Destroy the previous chart
+				myChart4.destroy();
+                // Draw a new chart on the basic of dropdown
+				myChart4 = new Chart(ctx4, {
+					type: document.getElementById("chart4type").value,  // Select chart type from dropdown
+					data: config4.data,
+                    options: config4.options,
+				});
+			};
+
+
+    
+
+  </script>
+{% endblock %}

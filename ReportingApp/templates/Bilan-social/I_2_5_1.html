@@ -1,0 +1,99 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.5.Par direction: <br>
+2.5.1.Fonctions techniques:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_5_1 %}"active"{% endblock %}
+{% block content %}
+Au {{today}}, près de {{thisyearperc.12}}% du personnel de l'ETAP est affecté dans les unités à fonction technique
+composées des
+directions exploration, etudes exploration
+, etudes productions dénveloppement, opérations production, operating des champs, informatique, services pétrolièrs,
+activités internationales.<br />
+Dans ces structures, le personnel est réparti comme suit:<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité à ETAP</th>
+            <td>{{nat_cat_tech4.0}}</td>
+            <td>{% widthratio nat_cat_tech4.0 nat_cat_tech4.2 100 %}</td>
+            <td>{{nat_cat_tech2.0}}</td>
+            <td>{% widthratio nat_cat_tech2.0 nat_cat_tech2.2 100 %}</td>
+            <td>{{nat_cat_tech1.0}}</td>
+            <td>{% widthratio nat_cat_tech1.0 nat_cat_tech1.2 100 %}</td>
+            <td>{{nat_cat_tech5.0}}</td>
+            <td>{% widthratio nat_cat_tech5.0 nat_cat_tech5.2 100 %}</td>
+            <td>{{nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0}}</td>
+            <td>
+                {% widthratio nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité hors ETAP</th>
+            <td>{{nat_cat_tech4.1}}</td>
+            <td>{% widthratio nat_cat_tech4.1 nat_cat_tech4.2 100 %}</td>
+            <td>{{nat_cat_tech2.1}}</td>
+            <td>{% widthratio nat_cat_tech2.1 nat_cat_tech2.2 100 %}</td>
+            <td>{{nat_cat_tech1.1}}</td>
+            <td>{% widthratio nat_cat_tech1.1 nat_cat_tech1.2 100 %}</td>
+            <td>{{nat_cat_tech5.1}}</td>
+            <td>{% widthratio nat_cat_tech5.1 nat_cat_tech5.2 100 %}</td>
+            <td>{{nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech1.1}}</td>
+            <td>
+                {% widthratio nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech5.1 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{nat_cat_tech4.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech2.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech1.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech5.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2}}</td>
+            <td>
+                100
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+Dans ces directions, le personnel cadre représente {% widthratio nat_cat_tech4.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%, 
+celui de la catégorie maitrise {% widthratio nat_cat_tech2.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%, 
+celui de l'execution {% widthratio nat_cat_tech1.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% 
+et celui de l'execution-maitrise {% widthratio nat_cat_tech5.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%.
+Parmi cette proportion {% widthratio nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% 
+de ce personnel a exercé ses activités au sein de ces directions 
+et {% widthratio nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech1.1 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% a été placé dans les
+sociétés mixtes et auprès
+des compagnies pétrolières partenaires de l'ETAP et internationales ainsi que dans les départements ministériels.
+Dans les directions à fonction technique, le personnel féminin représente  {% widthratio nat_cat_tech4.3 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% de l'ensemble du personnel affecté dans ces
+directions.<br />
+{% endblock %}

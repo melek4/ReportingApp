@@ -1,0 +1,151 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block h %}
+    <style>
+    .addNewRecord {
+        background-color: #3c8dbc !important;
+        color: #ffffff !important;
+        margin: 5px 5px 5px 5px;
+    }
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    </style>
+{% endblock %}
+{% block title %} - Liste des absences et congés du personnel{% endblock %}
+{% block header %}
+Liste des absences et congés du personnel
+{% endblock %}
+{% block level %}
+Gestion de personnel
+{% endblock %}
+
+{% block content %}
+<h4>Liste des absences:</h4><br>
+<a href="{% url 'create_Absence' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter absence</a><br><br>
+{% if Abs_list %}
+<table class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col">Matricule personnel</th>
+            <th scope="col">Nature absence</th>
+            <th scope="col">Date début</th>
+            <th scope="col">Periode début</th>
+            <th scope="col">Date fin</th>
+            <th scope="col">Periode fin</th>
+            <th scope="col">Nombre jours</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in Abs_list %}
+        <tr>
+            <td>{{a.abs_mat_95}}</td>
+            <td>{{a.abs_nat_9}}</td>
+            <td>{{a.abs_date_deb}}</td>
+            <td>{{a.abs_perdeb_x}}</td>
+            <td>{{a.abs_date_fin}}</td>
+            <td>{{a.abs_perfin_x}}</td>
+            <td>{{a.abs_nbrjour_93}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Absence' a.index_pk %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Absence' a.index_pk %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5>Pas d'absences pour cette personne.</h5>
+{% endif %}
+<br />
+<h4>Liste des congés:</h4><br>
+<a href="{% url 'create_Conge' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter conge</a><br><br>
+{% if Cong_list %}
+<table class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col">Matricule personnel</th>
+            <th scope="col">Nature congé</th>
+            <th scope="col">Ancien solde</th>
+            <th scope="col">Nombre jours</th>
+            <th scope="col">Nouveau solde</th>
+            <th scope="col">Date début</th>
+            <th scope="col">Periode début</th>
+            <th scope="col">Date fin</th>
+            <th scope="col">Periode fin</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in Cong_list %}
+        <tr>
+            <td>{{c.cong_mat_95}}</td>
+            {% if c.cong_nat_9 == 3 %} 
+                <td>Exceptionnel</td>
+            {% elif c.cong_nat_9 == 1 %}
+                <td>Annuel</td>
+            {% elif c.cong_nat_9 == 2 %}
+                <td>Recuperation</td>
+            {% else %}
+                <td>{{c.cong_nat_9}}</td>
+            {% endif %}
+            <td>{{c.cong_ancsold_93}}</td>
+            <td>{{c.cong_nbrjour_93}}</td>
+            <td>{{c.cong_novsold_93}}</td>
+            <td>{{c.cong_date_deb}}</td>
+            <td>{{c.cong_perdeb_x}}</td>
+            <td>{{c.cong_date_fin}}</td>
+            <td>{{c.cong_perfin_x}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Conge' c.index_pk %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Conge' c.index_pk %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5>Pas de congés pour cette personne.</h5>
+{% endif %}
+{% endblock %}
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/Libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.js"></script>
+
+
+<script>
+   $(document).ready( function(){
+    $('#paie_table').DataTable({
+        dom: 'B<"clear">lfrtip',
+        colReorder: true,
+        buttons: [
+            {
+                extend: 'colvis',
+                collectionLayout: 'fixed columns',
+                collectionTitle: 'Column visibility control',
+                className: "addNewRecord",
+            }
+        ],
+        
+        
+    });
+   });
+</script>
+{% endblock %}

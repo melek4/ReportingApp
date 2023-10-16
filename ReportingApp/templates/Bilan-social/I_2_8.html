@@ -1,0 +1,21 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.8.Par ancienneté:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_8 %}"active"{% endblock %}
+{% block content %}
+La moyenne des années d'ancienneté du personnel (claculée sur l'effectif total) est de {{Average_Anc_Years_T}} anset
+{{Average_Anc_Months_T}} mois.
+<br />
+<br />
+Près de {{half_Percent.0}} % du personnel ETAP dispose d'une ancienneté de travail à ETAP de moins de dix ans
+et{{half_Percent.1}} % environ des agents
+ont une ancienneté à ETAP supérieure à dix ans.
+{% endblock %}

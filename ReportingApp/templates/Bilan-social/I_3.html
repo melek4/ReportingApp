@@ -1,0 +1,49 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+3.Départs à la retraite:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_3 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Année</th>
+            <th scope="col" colspan="4">Technique</th>
+            <th scope="col" colspan="4">Gestion</th>
+            <th scope="col" rowspan="2">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in p15 %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{i.0}}</th>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{i.4}}</td>
+            <td>{{i.5}}</td>
+            <td>{{i.6}}</td>
+            <td>{{i.7}}</td>
+            <td>{{i.8}}</td>
+            <td>{{i.9}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><br />
+{% endblock %}

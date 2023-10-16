@@ -1,0 +1,70 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block title %} - Prévision des promotions{% endblock %}
+{% block header %}
+Prévision des promotions
+{% endblock %}
+{% block level %}
+Prévision
+{% endblock %}
+
+{% block status_prevision %}"active"{% endblock %}
+{% block content %}
+<table id="promotion_table" class="table"  style="background-color: #3c8dbc; color: white;">
+    <thead>
+        <tr>
+            <th scope="col">Matricule du personnel</th>
+            <th scope="col">Promotion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i, j in output %}
+            {% if j == 0 %}
+            <tr style="background-color: #ffcccb;">
+            <td><a href="{% url 'pers_prom_detail_view' i %}" type="button" class="btn btn-secondary">{{i}}</a></td>
+            <td style="color: #000000;">Non</td>
+            </tr>
+            {% else %}
+            <tr style="background-color: #d7ead7;">
+            <td><a href="{% url 'pers_prom_detail_view' i %}" type="button" class="btn btn-secondary">{{i}}</a></td>
+            <td style="color: #000000;">Oui</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/Libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.js"></script>
+
+
+<script>
+   $(document).ready( function(){
+    $('#promotion_table').DataTable({
+        dom: 'B<"clear">lfrtip',
+        colReorder: true,
+        "language": {
+            "lengthMenu": "Afficher _MENU_ records par page",
+            "info": "Page _PAGE_ de _PAGES_",
+            "paginate": {
+                "first":      "Premier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Précédent",
+            },
+            "search": "Rechercher : _INPUT_"
+        },
+        columns: [
+            null,
+            { orderable: false },
+        ]
+        
+        
+    });
+   });
+</script>
+{% endblock %}

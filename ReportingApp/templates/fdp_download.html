@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Django PDF</title>
+        <style type="text/css">
+            table, td, th {
+                border: 1px solid;
+                text-align: center;
+                padding: 4px 50px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+        </style>
+    </head>
+    <body>
+    <table border="0.5">
+
+    <thead>
+    
+        <tr>
+          <th colspan="3" style="text-align: center;">ENTREPRISE TUNISIENNE D'ACTIVITES PETROLIERES 54, Av. Mohammed V-Tunis BP 83 - 1073 Montplaisir</th>
+          <th colspan="3" style="text-align: center;">BULLETIN DE PAIE</th>
+          <th colspan="1" style="text-align: center;"><img src="{% static 'image/ETAP_logo_transparent.png' %}" width="50" height="60"/></th>
+          
+        </tr>
+        <tr>
+            <th colspan="3" style="text-align: center;"> MATRICULE</th>
+            <th colspan="2" rowspan="2" style="text-align: center;"> NOM ET PRENOM </th> 
+            <th colspan="2" rowspan="2" style="text-align: center;"> QUALIFICATION </th> 
+        </tr>
+        <tr>
+            <th> ETAP </th>
+            <th> ASS </th>
+            <th> CNRPS </th>
+        </tr>
+        <tr>
+            <td>  {{matricule}}</td>
+            <td>  </td>
+            <td>  </td>
+            <td colspan="2" style="text-align: center;">  </td>
+            <td colspan="2" style="text-align: center;"> {{qualification}} </td>
+        </tr>
+        <tr>
+             <th>C.C.F</th>
+             <th>S.F</th>
+             <th>E.S</th>
+             <th>DIRECTION</th>
+             <th>DATE DE PAIE</th>
+             <th>C.L</th>
+             <th>SA.BASE</th>
+        </tr>
+        <tr>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td> {{direction}} </td>
+              <td> {{date_de_paie}} </td>
+              <td>  </td>
+              <td>{{salaire_de_base}}  </td>
+        </tr>
+        <TR>
+            <TH colspan="4">LIBELLE</TH>
+            <th>Nbre.BASE</th>
+            <th>A DEDUIRE</th>
+            <th>A PAYER</th>
+        </TR>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="4"><b>SALAIRE DE BASE<b></th>
+            <td>{{nb_jour}}</td>
+            <td></td>
+            <td>{{salaire_de_base}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">INDEMNITE DE PROJET</th>
+            <td></td>
+            <td></td>
+            <td>{{indemnite_projet}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">INDEMNITE DE REPRESENTATION</th>
+            <td></td>
+            <td></td>
+            <td>{{indemnite_representation}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">INDEMNITE KILOMETRIQUE</th>
+            <td></td>
+            <td></td>
+            <td>{{indemnite_kilometrique}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">INDEMNITE MAJORATION KILOMETRIQUE</th>
+            <td></td>
+            <td></td>
+            <td>{{indemnite_majoration_kilometrique}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">INDEMNITE SPECIFIQUE 2016-2017-2018</th>
+            <td></td>
+            <td></td>
+            <td>{{indemnite_specifique}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">SALAIRE BRUT</th>
+            <td>{{nb_jour}}</td>
+            <td></td>
+            <td>{{salaire_brut}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE RETRAITE</th>
+            <td></td>
+            <td>{{retenue_retraite}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE PREVOYANCE SOCIALE</th>
+            <td></td>
+            <td>{{retenue_prevoyage_sociale}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE CAPITAL DECES</th>
+            <td></td>
+            <td>{{retenue_capital_decès}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">SALAIRE IMPOSABLE</th>
+            <td></td>
+            <td></td>
+            <td>{{salaire_imposable}}</td>
+        </tr>
+        <tr>
+            <th colspan="4">CONTRIBUTION SOCIALE DE SOUDARITE</th>
+            <td></td>
+            <td>{{contribution_sociale}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE IMPOT SUR LE REVENU</th>
+            <td></td>
+            <td>{{retenue_impot}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE ASSURANCE GROUPE</th>
+            <td></td>
+            <td>{{retenue_assurance_groupe}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="4">RETENUE ASSURANCE RETRAITE</th>
+            <td></td>
+            <td>{{retenue_assurance_retraite}}</td>
+            <td></td>
+        </tr>
+        <TR>
+            <th colspan="7" style="text-align: center;">AFFILIE A LA CNRPS 4105</th>
+        </TR>
+        <tr>
+
+            <th rowspan="2"> s.conge</th>
+            <th colspan="2" style="text-align: center;"> CUMUL</th>
+            <th></th>
+            <th colspan="3" style="text-align: center;"> PAYEMENT</th>
+            
+        </tr>
+        <TR>
+            <th>SAL.BRUT</th>
+            <TH> SAL.IMPOSABLE</TH>
+            <th>Mode</th>
+            <th colspan="2" style="text-align: center;">N COMPTE</th>
+            <th>NET A PAYER</th>
+        </TR>
+        <TR>
+            <td>25</td>
+            <td>{{salaire_brut}}</td>
+            <td>{{salaire_imposable}}</td>
+            <td></td>
+            <td colspan="2"></td>
+            
+            <td>{{net_a_payer}}</td>
+        </TR>
+    </tbody>
+
+  </table>
+  </body>
+  </html>

@@ -1,0 +1,78 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block h %}
+    <style>
+    .addNewRecord {
+        background-color: #3c8dbc !important;
+        color: #ffffff !important;
+        margin: 5px 5px 5px 5px;
+    }
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    </style>
+{% endblock %}
+{% block title %} - Liste des paies du personnel{% endblock %}
+{% block header %}
+Liste des paies du personnel
+{% endblock %}
+{% block level %}
+Gestion de paie
+{% endblock %}
+{% block content %}
+
+<a href="{% url 'create_Paie' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter</a><br /><br />
+{% if paie_list %}
+<div style="overflow: scroll; height:400px;">
+<table class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col">Matricule du personnel</th>
+            <th scope="col">Mois</th>
+            <th scope="col">Année</th>
+            <th scope="col">Jours de présence</th>
+            <th scope="col">Nom de la ligne</th>
+            <th scope="col">Montant de la ligne</th>
+            <th scope="col">Quantité de la ligne</th>
+            <th scope="col">Type de la ligne</th>
+            <th scope="col">Séquence</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in paie_list %}
+        <tr>
+            <td>{{a.matricule}}</td>
+            <td>{{a.mois}}</td>
+            <td>{{a.anne}}</td>
+            <td>{{a.jours_pres}}</td>
+            <td>{{a.nom_ligne}}</td>
+            <td>{{a.mnt_ligne}}</td>
+            <td>{{a.nbre_qte}}</td>
+            <td>{{a.type_ligne}}</td>
+            <td>{{a.num_ord}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Paie' a.index_pk %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Paie' a.index_pk %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% else %}
+<h5>Pas de paies pour cette personne.</h5>
+{% endif %}
+
+{% endblock %}

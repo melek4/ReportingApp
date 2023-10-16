@@ -1,0 +1,237 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+Principaux Indicateurs
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_PI %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectif total</th>
+            <td>{{thisyear2vals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyearvals.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs permanents</th>
+            <td>{{thisyear2vals.2}}</td>
+            <td>{{thisyear1vals.2}}</td>
+            <td>{{thisyearvals.2}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -En activité à ETAP</th>
+            <td>{{thisyear2vals.3}}</td>
+            <td>{{thisyear1vals.3}}</td>
+            <td>{{thisyearvals.3}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -Détachés</th>
+            <td>{{thisyear2vals.4}}</td>
+            <td>{{thisyear1vals.4}}</td>
+            <td>{{thisyearvals.4}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -Mis en disponibilité</th>
+            <td>{{thisyear2vals.5}}</td>
+            <td>{{thisyear1vals.5}}</td>
+            <td>{{thisyearvals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs détachés auprès d'ETAP</th>
+            <td>{{thisyear2vals.6}}</td>
+            <td>{{thisyear1vals.6}}</td>
+            <td>{{thisyearvals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs contractuels</th>
+            <td>{{thisyear2vals.7}}</td>
+            <td>{{thisyear1vals.7}}</td>
+            <td>{{thisyearvals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition des effectifs par catégorie</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Cadres</th>
+            <td>{{thisyear2vals.8}}</td>
+            <td>{{thisyear1vals.8}}</td>
+            <td>{{thisyearvals.8}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.0}}%)</td>
+            <td>({{thisyear1perc.0}}%)</td>
+            <td>({{thisyearperc.0}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents de maitrise</th>
+            <td>{{thisyear2vals.9}}</td>
+            <td>{{thisyear1vals.9}}</td>
+            <td>{{thisyearvals.9}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.1}}%)</td>
+            <td>({{thisyear1perc.1}}%)</td>
+            <td>({{thisyearperc.1}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents d'exécution</th>
+            <td>{{thisyear2vals.10}}</td>
+            <td>{{thisyear1vals.10}}</td>
+            <td>{{thisyearvals.10}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.2}}%)</td>
+            <td>({{thisyear1perc.2}}%)</td>
+            <td>({{thisyearperc.2}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents d'exécution maitrise</th>
+            <td>{{thisyear2vals.11}}</td>
+            <td>{{thisyear1vals.11}}</td>
+            <td>{{thisyearvals.11}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.3}}%)</td>
+            <td>({{thisyear1perc.3}}%)</td>
+            <td>({{thisyearperc.3}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition par qualifiquation</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Ingénieurs</th>
+            <td>{{thisyear2vals.12}}</td>
+            <td>{{thisyear1vals.12}}</td>
+            <td>{{thisyearvals.12}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.4}}%)</td>
+            <td>({{thisyear1perc.4}}%)</td>
+            <td>({{thisyearperc.4}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Techniciens et techniciens sup.</th>
+            <td>{{thisyear2vals.13}}</td>
+            <td>{{thisyear1vals.13}}</td>
+            <td>{{thisyearvals.13}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.5}}%)</td>
+            <td>({{thisyear1perc.5}}%)</td>
+            <td>({{thisyearperc.5}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents techniques</th>
+            <td>{{thisyear2vals.14}}</td>
+            <td>{{thisyear1vals.14}}</td>
+            <td>{{thisyearvals.14}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.6}}%)</td>
+            <td>({{thisyear1perc.6}}%)</td>
+            <td>({{thisyearperc.6}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Cadres de gestion</th>
+            <td>{{thisyear2vals.15}}</td>
+            <td>{{thisyear1vals.15}}</td>
+            <td>{{thisyearvals.15}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.7}}%)</td>
+            <td>({{thisyear1perc.7}}%)</td>
+            <td>({{thisyearperc.7}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents de maitrise de gestion</th>
+            <td>{{thisyear2vals.16}}</td>
+            <td>{{thisyear1vals.16}}</td>
+            <td>{{thisyearvals.16}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.8}}%)</td>
+            <td>({{thisyear1perc.8}}%)</td>
+            <td>({{thisyearperc.8}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents administratifs</th>
+            <td>{{thisyear2vals.17}}</td>
+            <td>{{thisyear1vals.17}}</td>
+            <td>{{thisyearvals.17}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.9}}%)</td>
+            <td>({{thisyear1perc.9}}%)</td>
+            <td>({{thisyearperc.9}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition par genre</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Hommes</th>
+            <td>{{thisyear2vals.18}}</td>
+            <td>{{thisyear1vals.18}}</td>
+            <td>{{thisyearvals.18}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.10}}%)</td>
+            <td>({{thisyear1perc.10}}%)</td>
+            <td>({{thisyearperc.10}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Femmes</th>
+            <td>{{thisyear2vals.19}}</td>
+            <td>{{thisyear1vals.19}}</td>
+            <td>{{thisyearvals.19}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.11}}%)</td>
+            <td>({{thisyear1perc.11}}%)</td>
+            <td>({{thisyearperc.11}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Age moyen</th>
+            <td>{{thisyear2vals.20}}</td>
+            <td>{{thisyear1vals.20}}</td>
+            <td>{{thisyearvals.20}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Ancienneté moyenne</th>
+            <td>{{thisyear2vals.21}}</td>
+            <td>{{thisyear1vals.21}}</td>
+            <td>{{thisyearvals.21}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Taux d'absentéisme</th>
+            <td>{{thisyear2vals.22}}</td>
+            <td>{{thisyear1vals.22}}</td>
+            <td>{{thisyearvals.22}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

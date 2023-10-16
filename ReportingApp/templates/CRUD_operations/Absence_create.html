@@ -1,0 +1,99 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %} - Ajouter absence {% endblock %}
+{% block header %}
+Ajouter absence
+{% endblock %}
+{% block level %}
+Gestion des absences
+{% endblock %}
+{% block h %}
+    <style>
+    .wrapper3333 {
+            display: grid;
+            grid-template-columns: 1fr 1fr ;
+            grid-template-rows: 60px 60px 60px 60px 60px;
+            gap: 40px;
+        }
+
+        .box13333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 1 / 2;
+        }
+
+        .box23333 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .box33333 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        .box43333 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row: 2 / 3;
+        }
+
+        .box53333 {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+        }
+        .box63333 {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+        }
+
+        .box73333 {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+        }
+
+        .box83333 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row: 4 / 5;
+        }
+    
+    </style>
+    {% bootstrap_javascript jquery='full' %}
+
+    {{ form.media }}
+{% endblock %}
+{% block status_AA %}"active"{% endblock %}
+{% block content %}
+<br><br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class = "wrapper3333">
+    <div class = "box13333">
+    {% bootstrap_field form.abs_mat_95 %}
+    </div>
+    <div class = "box23333">
+    {% bootstrap_field form.abs_nat_9 %}
+    </div>
+    <div class = "box33333">
+    {% bootstrap_field form.abs_date_deb %}
+    </div>
+    <div class = "box43333">
+    {% bootstrap_field form.abs_perdeb_x %}
+    </div>
+    <div class = "box53333">
+    {% bootstrap_field form.abs_date_fin %}
+    </div>
+    <div class = "box63333">
+    {% bootstrap_field form.abs_perfin_x %}
+    </div>
+    <div class = "box73333">
+    {% bootstrap_field form.abs_nbrjour_93 %}
+    </div>
+    <div class = "box83333">
+    {% bootstrap_field form.index_pk %}
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% endblock %}

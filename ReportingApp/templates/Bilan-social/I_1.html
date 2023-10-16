@@ -1,0 +1,147 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi:<br />
+1.Effectifs: {% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_1 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2" colspan="2">Au {{today}} </th>
+            <th scope="col" colspan="4">Catégorie</th>
+            <th scope="col" colspan="3">Année</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" rowspan="3">Permanents</th>
+            <th scope="row">A ETAP</th>
+            <td>{{nat_cat4.0}}</td>
+            <td>{{nat_cat2.0}}</td>
+            <td>{{nat_cat1.0}}</td>
+            <td>{{nat_cat5.0}}</td>
+            <td>{{thisyearvals.3}}</td>
+            <td>{{thisyear1vals.3}}</td>
+            <td>{{thisyear2vals.3}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Détachés de l'ETAP</th>
+            <td>{{nat_cat4.1}}</td>
+            <td>{{nat_cat2.1}}</td>
+            <td>{{nat_cat1.1}}</td>
+            <td>{{nat_cat5.1}}</td>
+            <td>{{thisyearvals.4}}</td>
+            <td>{{thisyear1vals.4}}</td>
+            <td>{{thisyear2vals.4}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Mise en disponinilité</th>
+            <td>{{nat_cat4.2}}</td>
+            <td>{{nat_cat2.2}}</td>
+            <td>{{nat_cat1.2}}</td>
+            <td>{{nat_cat5.2}}</td>
+            <td>{{thisyearvals.5}}</td>
+            <td>{{thisyear1vals.5}}</td>
+            <td>{{thisyear2vals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">Contractuels</th>
+            <td>{{nat_cat4.3}}</td>
+            <td>{{nat_cat2.3}}</td>
+            <td>{{nat_cat1.3}}</td>
+            <td>{{nat_cat5.3}}</td>
+            <td>{{thisyearvals.7}}</td>
+            <td>{{thisyear1vals.7}}</td>
+            <td>{{thisyear2vals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">TOTAL</th>
+            <td>{{nat_cat4.4}}</td>
+            <td>{{nat_cat2.4}}</td>
+            <td>{{nat_cat1.4}}</td>
+            <td>{{nat_cat5.4}}</td>
+            <td>{{thisyearvals.3 | add:thisyearvals.4 | add:thisyearvals.5 | add:thisyearvals.7}}</td>
+            <td>{{thisyear1vals.3 | add:thisyear1vals.4 | add:thisyear1vals.5 | add:thisyear1vals.7}}</td>
+            <td>{{thisyear2vals.3 | add:thisyear2vals.4 | add:thisyear2vals.5 | add:thisyear2vals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">Détachés auprès de l'ETAP</th>
+            <td>{{nat_cat4.5}}</td>
+            <td>{{nat_cat2.5}}</td>
+            <td>{{nat_cat1.5}}</td>
+            <td>{{nat_cat5.5}}</td>
+            <td>{{thisyearvals.6}}</td>
+            <td>{{thisyear1vals.6}}</td>
+            <td>{{thisyear2vals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">EFFECTIF TOTAL</th>
+            <td>{{thisyearvals.8}}</td>
+            <td>{{thisyearvals.9}}</td>
+            <td>{{thisyearvals.10}}</td>
+            <td>{{thisyearvals.11}}</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyear2vals.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">%</th>
+            <td>{{thisyearperc.0}}</td>
+            <td>{{thisyearperc.1}}</td>
+            <td>{{thisyearperc.2}}</td>
+            <td>{{thisyearperc.3}}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<br />
+Au {{today}}, l'effectif total de l'ETAP est de {{thisyearvals.1}} agents dont {{thisyearvals.2}} permanents
+({{thisyearvals.3}} exerçant à ETAP, {{thisyearvals.4}} détachés auprès
+d'autres organismes, {{thisyearvals.5}} mis en
+disponibilité), {{thisyearvals.7}} contractuels et {{thisyearvals.6}} détachés auprès de l'ETAP.
+Le nombre des agents exerçant effectivement à ETAP est de {{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}}
+({{thisyearperc.14}}%) par rapport à {{thisyear1vals.3|add:thisyear1vals.7|add:thisyear1vals.6}} ({{thisyear1perc.14}}%)
+en {{thisyear1vals.0}}.<br />
+Les agents ETAP (toutes catégorie confondues) en détachement représentent {{thisyearperc.15}}% de l'effectif total
+({{thisyearvals.1}}) par rapport à {{thisyear1perc.15}}% en {{thisyear1vals.0}}.<br />
+Sur les {{thisyearvals.1}} agents, {{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}} sont payés directement par
+ETAP et qui en assurent régulièrement le suivi administratif (à distance
+dans le Cas
+de détachement ou d'affectation via les services concernés) dont {{thisyearvals.3|add:thisyearvals.7}} exerçant à ETAP,
+et {{thisyearvals.6}} détachés auprès de
+l'ETAP.<br /><br />
+
+Les effectifs en position de détachement ont été de {% widthratio nat_cat4.1 thisyearvals.8 100 %}% pour les cadres par
+rapport à l'ensemble du
+personnel de cette ctaégorie, {% widthratio nat_cat2.1 thisyearvals.9 100 %}% pour les agents de maitrise,
+{% widthratio nat_cat1.1 thisyearvals.10 100 %}% pour les agents d'execution et de
+{% widthratio nat_cat5.1 thisyearvals.11 100 %}%
+pour les agents d'execution-maitrise.<br />
+<br />
+
+{% if g %}
+<center><img src="data:image/png;base64, {{g|safe}}"></center>
+{% endif %}
+
+<br />
+{% if g_p4 %}
+<center><img src="data:image/png;base64, {{g_p4|safe}}"></center>
+{% endif %}
+<br />
+{% endblock %}

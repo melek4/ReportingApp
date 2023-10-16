@@ -1,0 +1,1627 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block h %}
+<style>
+.button {
+        padding: 8px 8px 8px 8px;
+        margin: 4px 4px 4px 4px;
+        border-radius: 3px;
+        background-color: #3c8dbc;
+    }
+</style>
+{% endblock %}
+{% block title %} - Bilan social{% endblock %}
+{% block header %}
+Bilan social
+{% endblock %}
+{% block level %}
+Rapport
+{% endblock %}
+{% block b %}<br><a href="{% url 'pdf_view'  %}" class="button"><i><img src="{% static 'image/pdf.png' %}" class="removeImage" alt="Remove this image" /></i></a><a href="{% url 'pdf_download'  %}" class="button"><i><img src="{% static 'image/pdf_download.png' %}" class="removeImage" alt="Remove this image" /></i></a>{% endblock %}
+{% block status_bilan_social %}"active"{% endblock %}
+{% block content %}
+
+
+<center>
+    <h3><b>Principaux Indicateurs</b></h3>
+</center>
+
+<br />
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectif total</th>
+            <td>{{thisyear2vals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyearvals.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs permanents</th>
+            <td>{{thisyear2vals.2}}</td>
+            <td>{{thisyear1vals.2}}</td>
+            <td>{{thisyearvals.2}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -En activité à ETAP</th>
+            <td>{{thisyear2vals.3}}</td>
+            <td>{{thisyear1vals.3}}</td>
+            <td>{{thisyearvals.3}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -Détachés</th>
+            <td>{{thisyear2vals.4}}</td>
+            <td>{{thisyear1vals.4}}</td>
+            <td>{{thisyearvals.4}}</td>
+        </tr>
+        <tr>
+            <th scope="row">&nbsp; -Mis en disponibilité</th>
+            <td>{{thisyear2vals.5}}</td>
+            <td>{{thisyear1vals.5}}</td>
+            <td>{{thisyearvals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs détachés auprès d'ETAP</th>
+            <td>{{thisyear2vals.6}}</td>
+            <td>{{thisyear1vals.6}}</td>
+            <td>{{thisyearvals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Effectifs contractuels</th>
+            <td>{{thisyear2vals.7}}</td>
+            <td>{{thisyear1vals.7}}</td>
+            <td>{{thisyearvals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition des effectifs par catégorie</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Cadres</th>
+            <td>{{thisyear2vals.8}}</td>
+            <td>{{thisyear1vals.8}}</td>
+            <td>{{thisyearvals.8}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.0}}%)</td>
+            <td>({{thisyear1perc.0}}%)</td>
+            <td>({{thisyearperc.0}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents de maitrise</th>
+            <td>{{thisyear2vals.9}}</td>
+            <td>{{thisyear1vals.9}}</td>
+            <td>{{thisyearvals.9}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.1}}%)</td>
+            <td>({{thisyear1perc.1}}%)</td>
+            <td>({{thisyearperc.1}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents d'exécution</th>
+            <td>{{thisyear2vals.10}}</td>
+            <td>{{thisyear1vals.10}}</td>
+            <td>{{thisyearvals.10}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.2}}%)</td>
+            <td>({{thisyear1perc.2}}%)</td>
+            <td>({{thisyearperc.2}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents d'exécution maitrise</th>
+            <td>{{thisyear2vals.11}}</td>
+            <td>{{thisyear1vals.11}}</td>
+            <td>{{thisyearvals.11}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.3}}%)</td>
+            <td>({{thisyear1perc.3}}%)</td>
+            <td>({{thisyearperc.3}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition par qualifiquation</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Ingénieurs</th>
+            <td>{{thisyear2vals.12}}</td>
+            <td>{{thisyear1vals.12}}</td>
+            <td>{{thisyearvals.12}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.4}}%)</td>
+            <td>({{thisyear1perc.4}}%)</td>
+            <td>({{thisyearperc.4}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Techniciens et techniciens sup.</th>
+            <td>{{thisyear2vals.13}}</td>
+            <td>{{thisyear1vals.13}}</td>
+            <td>{{thisyearvals.13}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.5}}%)</td>
+            <td>({{thisyear1perc.5}}%)</td>
+            <td>({{thisyearperc.5}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents techniques</th>
+            <td>{{thisyear2vals.14}}</td>
+            <td>{{thisyear1vals.14}}</td>
+            <td>{{thisyearvals.14}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.6}}%)</td>
+            <td>({{thisyear1perc.6}}%)</td>
+            <td>({{thisyearperc.6}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Cadres de gestion</th>
+            <td>{{thisyear2vals.15}}</td>
+            <td>{{thisyear1vals.15}}</td>
+            <td>{{thisyearvals.15}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.7}}%)</td>
+            <td>({{thisyear1perc.7}}%)</td>
+            <td>({{thisyearperc.7}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents de maitrise de gestion</th>
+            <td>{{thisyear2vals.16}}</td>
+            <td>{{thisyear1vals.16}}</td>
+            <td>{{thisyearvals.16}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.8}}%)</td>
+            <td>({{thisyear1perc.8}}%)</td>
+            <td>({{thisyearperc.8}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Agents administratifs</th>
+            <td>{{thisyear2vals.17}}</td>
+            <td>{{thisyear1vals.17}}</td>
+            <td>{{thisyearvals.17}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.9}}%)</td>
+            <td>({{thisyear1perc.9}}%)</td>
+            <td>({{thisyearperc.9}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Répartition par genre</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Hommes</th>
+            <td>{{thisyear2vals.18}}</td>
+            <td>{{thisyear1vals.18}}</td>
+            <td>{{thisyearvals.18}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.10}}%)</td>
+            <td>({{thisyear1perc.10}}%)</td>
+            <td>({{thisyearperc.10}}%)</td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">&nbsp; -Femmes</th>
+            <td>{{thisyear2vals.19}}</td>
+            <td>{{thisyear1vals.19}}</td>
+            <td>{{thisyearvals.19}}</td>
+        </tr>
+        <tr>
+            <td>({{thisyear2perc.11}}%)</td>
+            <td>({{thisyear1perc.11}}%)</td>
+            <td>({{thisyearperc.11}}%)</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Age moyen</th>
+            <td>{{thisyear2vals.20}}</td>
+            <td>{{thisyear1vals.20}}</td>
+            <td>{{thisyearvals.20}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Ancienneté moyenne</th>
+            <td>{{thisyear2vals.21}}</td>
+            <td>{{thisyear1vals.21}}</td>
+            <td>{{thisyearvals.21}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Taux d'absentéisme</th>
+            <td>{{thisyear2vals.22}}</td>
+            <td>{{thisyear1vals.22}}</td>
+            <td>{{thisyearvals.22}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+<h4><b>I.EMPLOI</b></h4>
+<br />
+<b>1.Effectifs</b>
+<form>
+    {% if g %}
+    <center><img src="data:image/png;base64, {{g|safe}}"></center>
+    {% endif %}
+</form>
+<br />
+{% if g_p4 %}
+<center><img src="data:image/png;base64, {{g_p4|safe}}"></center>
+{% endif %}
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2" colspan="2">Au {{today}} </th>
+            <th scope="col" colspan="4">Catégorie</th>
+            <th scope="col" colspan="3">Année</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Permanents</th>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <th scope="row">A ETAP</th>
+            <td>{{nat_cat4.0}}</td>
+            <td>{{nat_cat2.0}}</td>
+            <td>{{nat_cat1.0}}</td>
+            <td>{{nat_cat5.0}}</td>
+            <td>{{thisyearvals.3}}</td>
+            <td>{{thisyear1vals.3}}</td>
+            <td>{{thisyear2vals.3}}</td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <th scope="row">Détachés de l'ETAP</th>
+            <td>{{nat_cat4.1}}</td>
+            <td>{{nat_cat2.1}}</td>
+            <td>{{nat_cat1.1}}</td>
+            <td>{{nat_cat5.1}}</td>
+            <td>{{thisyearvals.4}}</td>
+            <td>{{thisyear1vals.4}}</td>
+            <td>{{thisyear2vals.4}}</td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <th scope="row">Mise en disponinilité</th>
+            <td>{{nat_cat4.2}}</td>
+            <td>{{nat_cat2.2}}</td>
+            <td>{{nat_cat1.2}}</td>
+            <td>{{nat_cat5.2}}</td>
+            <td>{{thisyearvals.5}}</td>
+            <td>{{thisyear1vals.5}}</td>
+            <td>{{thisyear2vals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">Contractuels</th>
+            <td>{{nat_cat4.3}}</td>
+            <td>{{nat_cat2.3}}</td>
+            <td>{{nat_cat1.3}}</td>
+            <td>{{nat_cat5.3}}</td>
+            <td>{{thisyearvals.7}}</td>
+            <td>{{thisyear1vals.7}}</td>
+            <td>{{thisyear2vals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">TOTAL</th>
+            <td>{{nat_cat4.4}}</td>
+            <td>{{nat_cat2.4}}</td>
+            <td>{{nat_cat1.4}}</td>
+            <td>{{nat_cat5.4}}</td>
+            <td>{{thisyearvals.3 | add:thisyearvals.4 | add:thisyearvals.5 | add:thisyearvals.7}}</td>
+            <td>{{thisyear1vals.3 | add:thisyear1vals.4 | add:thisyear1vals.5 | add:thisyear1vals.7}}</td>
+            <td>{{thisyear2vals.3 | add:thisyear2vals.4 | add:thisyear2vals.5 | add:thisyear2vals.7}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">Détachés auprès de l'ETAP</th>
+            <td>{{nat_cat4.5}}</td>
+            <td>{{nat_cat2.5}}</td>
+            <td>{{nat_cat1.5}}</td>
+            <td>{{nat_cat5.5}}</td>
+            <td>{{thisyearvals.6}}</td>
+            <td>{{thisyear1vals.6}}</td>
+            <td>{{thisyear2vals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">EFFECTIF TOTAL</th>
+            <td>{{thisyearvals.8}}</td>
+            <td>{{thisyearvals.9}}</td>
+            <td>{{thisyearvals.10}}</td>
+            <td>{{thisyearvals.11}}</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyear2vals.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row" colspan="2">%</th>
+            <td>{{thisyearperc.0}}</td>
+            <td>{{thisyearperc.1}}</td>
+            <td>{{thisyearperc.2}}</td>
+            <td>{{thisyearperc.3}}</td>
+            <td>100</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<br />
+Au {{today}}, l'effectif total de l'ETAP est de {{thisyearvals.1}} agents dont {{thisyearvals.2}} permanents
+({{thisyearvals.3}} exerçant à ETAP, {{thisyearvals.4}} détachés auprès
+d'autres organismes, {{thisyearvals.5}} mis en
+disponibilité), {{thisyearvals.7}} contractuels et {{thisyearvals.6}} détachés auprès de l'ETAP.
+Le nombre des agents exerçant effectivement à ETAP est de {{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}}
+({{thisyearperc.14}}%) par rapport à {{thisyear1vals.3|add:thisyear1vals.7|add:thisyear1vals.6}} ({{thisyear1perc.14}}%)
+en {{thisyear1vals.0}}.<br />
+Les agents ETAP (toutes catégorie confondues) en détachement représentent {{thisyearperc.15}}% de l'effectif total
+({{thisyearvals.1}}) par rapport à {{thisyear1perc.15}}% en {{thisyear1vals.0}}.<br />
+Sur les {{thisyearvals.1}} agents, {{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}} sont payés directement par
+ETAP et qui en assurent régulièrement le suivi administratif (à distance
+dans le Cas
+de détachement ou d'affectation via les services concernés) dont {{thisyearvals.3|add:thisyearvals.7}} exerçant à ETAP,
+et {{thisyearvals.6}} détachés auprès de
+l'ETAP.<br />
+<br />
+Les effectifs en position de détachement ont été de {% widthratio nat_cat4.1 thisyearvals.8 100 %}% pour les cadres par
+rapport à l'ensemble du
+personnel de cette ctaégorie, {% widthratio nat_cat2.1 thisyearvals.9 100 %}% pour les agents de maitrise,
+{% widthratio nat_cat1.1 thisyearvals.10 100 %}% pour les agents d'execution et de
+{% widthratio nat_cat5.1 thisyearvals.11 100 %}%
+pour les agents d'execution-maitrise.<br />
+<br />
+<br />
+<b>2.Répartitions du personnel:</b><br />
+<b>2.1.Par Catégorie professionnelle:</b>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Effectifs</th>
+            <th scope="col" rowspan="2">Cadre</th>
+            <th scope="col" rowspan="2">Maitrise</th>
+            <th scope="col" rowspan="2">Execution</th>
+            <th scope="col" rowspan="2">Execution maitrise</th>
+            <th scope="col" colspan="3">TOTAL</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel exerçant à ETAP</th>
+            <td>{{nat_cat4.0|add:nat_cat4.3|add:nat_cat4.5}}</td>
+            <td>{{nat_cat2.0|add:nat_cat2.3|add:nat_cat2.5}}</td>
+            <td>{{nat_cat1.0|add:nat_cat1.3|add:nat_cat1.5}}</td>
+            <td>{{nat_cat5.0|add:nat_cat5.3|add:nat_cat5.5}}</td>
+            <td>{{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}}</td>
+            <td>{{thisyear1vals.3|add:thisyear1vals.7|add:thisyear1vals.6}}</td>
+            <td>{{thisyear2vals.3|add:thisyear2vals.7|add:thisyear2vals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel exerçant hors ETAP</th>
+            <td>{{nat_cat4.1|add:nat_cat4.2}}</td>
+            <td>{{nat_cat2.1|add:nat_cat2.2}}</td>
+            <td>{{nat_cat1.1|add:nat_cat1.2}}</td>
+            <td>{{nat_cat5.1|add:nat_cat5.2}}</td>
+            <td>{{thisyearvals.4|add:thisyearvals.5}}</td>
+            <td>{{thisyear1vals.4|add:thisyear1vals.5}}</td>
+            <td>{{thisyear2vals.4|add:thisyear2vals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{thisyearvals.8}}</td>
+            <td>{{thisyearvals.9}}</td>
+            <td>{{thisyearvals.10}}</td>
+            <td>{{thisyearvals.11}}</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyear2vals.1}}</td>
+        </tr>
+    </tbody>
+</table>
+Les cadres représentent {{thisyearperc.0}}% en {{thisyearvals.0}} ({{thisyear1perc.0}}% en {{thisyear1vals.0}} et
+{{thisyear2perc.0}}% en {{thisyear2vals.0}}), les agaents de maitrise {{thisyearperc.1}}%, les agents d'execution
+{{thisyearperc.2}}% et les agents d'execution maitrise {{thisyearperc.3}}%.<br />
+La proportion des cadres exerçant effectivement à ETAP par rpport à l'ensemble des effectifs de cette catégorie est fixé
+à {% widthratio nat_cat4.0|add:nat_cat4.3|add:nat_cat4.5 thisyearvals.8 100 %}%, celle de la
+maitrise à {% widthratio nat_cat2.0|add:nat_cat2.3|add:nat_cat2.5 thisyearvals.9 100 %}%, celle de l'execution à
+{%widthratio nat_cat1.0|add:nat_cat1.3|add:nat_cat1.5 thisyearvals.10 100 %}%
+et celle de l'execution-maitrise est fixée à
+{% widthratio nat_cat5.0|add:nat_cat5.3|add:nat_cat5.5 thisyearvals.11 100 %}%.<br />
+
+<br />
+<b>2.2.Par Profil:</b>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel Technique</th>
+            <td>{{thisyearvals.23}}</td>
+            <td>{{thisyearperc.12}}</td>
+            <td>{{thisyear1vals.23}}</td>
+            <td>{{thisyear1perc.12}}</td>
+            <td>{{thisyear2vals.23}}</td>
+            <td>{{thisyear2perc.12}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel de Gestion</th>
+            <td>{{thisyearvals.24}}</td>
+            <td>{{thisyearperc.13}}</td>
+            <td>{{thisyear1vals.24}}</td>
+            <td>{{thisyear1perc.13}}</td>
+            <td>{{thisyear2vals.24}}</td>
+            <td>{{thisyear2perc.13}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{thisyearvals.1}}</td>
+            <td>100</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>100</td>
+            <td>{{thisyear2vals.1}}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<b>2.3.Par Catégorie et par Profil:</b>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Exec-Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel Technique</th>
+            <td>{{ p7_c_val.0 }}</td>
+            <td>{{ p7_c_per.0 }}</td>
+            <td>{{ p7_m_val.0 }}</td>
+            <td>{{ p7_m_per.0 }}</td>
+            <td>{{ p7_e_val.0 }}</td>
+            <td>{{ p7_e_per.0 }}</td>
+            <td>{{ p7_exm_val.0 }}</td>
+            <td>{{ p7_exm_per.0 }}</td>
+            <td>{{ p7_total_val.0 }}</td>
+            <td>{{ p7_totat_per.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel de Gestion</th>
+            <td>{{ p7_c_val.1 }}</td>
+            <td>{{ p7_c_per.1 }}</td>
+            <td>{{ p7_m_val.1 }}</td>
+            <td>{{ p7_m_per.1 }}</td>
+            <td>{{ p7_e_val.1 }}</td>
+            <td>{{ p7_e_per.1 }}</td>
+            <td>{{ p7_exm_val.1 }}</td>
+            <td>{{ p7_exm_per.1 }}</td>
+            <td>{{ p7_total_val.1 }}</td>
+            <td>{{ p7_totat_per.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_c_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_m_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_e_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_total_val.2 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{{p7_totat_per.0}}% du personnel sont des techniciens et {{p7_totat_per.1}}% sont des gestionnaires.<br />
+<br />
+
+<b>2.4.Par Genre, par Catégorie et par Profil:</b>
+
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2"></th>
+            <th scope="col" colspan="4">Cadres</th>
+            <th scope="col" colspan="4">Maitrise</th>
+            <th scope="col" colspan="4">Execution</th>
+            <th scope="col" colspan="4">Exec-Maitrise</th>
+            <th scope="col" colspan="2">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">T</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel Technique</th>
+            <td>{{ p7_cm_val.0 }}</td>
+            <td>{{ p7_cm_per.0 }}</td>
+            <td>{{ p7_cf_val.0 }}</td>
+            <td>{{ p7_cf_per.0 }}</td>
+            <td>{{ p7_mm_val.0 }}</td>
+            <td>{{ p7_mm_per.0 }}</td>
+            <td>{{ p7_mf_val.0 }}</td>
+            <td>{{ p7_mf_per.0 }}</td>
+            <td>{{ p7_em_val.0 }}</td>
+            <td>{{ p7_em_per.0 }}</td>
+            <td>{{ p7_ef_val.0 }}</td>
+            <td>{{ p7_ef_per.0 }}</td>
+            <td>{{ p7_exmm_val.0 }}</td>
+            <td>{{ p7_exmm_per.0 }}</td>
+            <td>{{ p7_exmf_val.0 }}</td>
+            <td>{{ p7_exmf_per.0 }}</td>
+            <td>{{ p7_total_val.0 }}</td>
+            <td>{{ p7_totat_per.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel de Gestion</th>
+            <td>{{ p7_cm_val.1 }}</td>
+            <td>{{ p7_cm_per.1 }}</td>
+            <td>{{ p7_cf_val.1 }}</td>
+            <td>{{ p7_cf_per.1 }}</td>
+            <td>{{ p7_mm_val.1 }}</td>
+            <td>{{ p7_mm_per.1 }}</td>
+            <td>{{ p7_mf_val.1 }}</td>
+            <td>{{ p7_mf_per.1 }}</td>
+            <td>{{ p7_em_val.1 }}</td>
+            <td>{{ p7_em_per.1 }}</td>
+            <td>{{ p7_ef_val.1 }}</td>
+            <td>{{ p7_ef_per.1 }}</td>
+            <td>{{ p7_exmm_val.1 }}</td>
+            <td>{{ p7_exmm_per.1 }}</td>
+            <td>{{ p7_exmf_val.1 }}</td>
+            <td>{{ p7_exmf_per.1 }}</td>
+            <td>{{ p7_total_val.1 }}</td>
+            <td>{{ p7_totat_per.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_cm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_cf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_mm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_mf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_em_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_ef_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exmm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exmf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_total_val.2 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<form>{% if g_p8 %}
+    <center><img src="data:image/png;base64, {{g_p8|safe}}"></center>
+    {% endif %}
+</form>
+
+<br />
+Les femmes constituent aussi {{thisyearperc.11}}% de l'ensemble du personnel à ETAP.
+Les femmes cadre à profil technique représentent #% de l'ensemble des cadres du meme profil.<br />
+<br />
+
+<b>2.5.Par Direction:</b>
+<br />
+<br />
+<b>2.5.1.Fonctions techniques:</b><br />
+<br />
+Au {{today}}, près de {{thisyearperc.12}}% du personnel de l'ETAP est affecté dans les unités à fonction technique
+composées des
+directions exploration, etudes exploration
+, etudes productions dénveloppement, opérations production, operating des champs, informatique, services pétrolièrs,
+activités internationales.<br />
+Dans ces structures, le personnel est réparti comme suit:<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité à ETAP</th>
+            <td>{{nat_cat_tech4.0}}</td>
+            <td>{% widthratio nat_cat_tech4.0 nat_cat_tech4.2 100 %}</td>
+            <td>{{nat_cat_tech2.0}}</td>
+            <td>{% widthratio nat_cat_tech2.0 nat_cat_tech2.2 100 %}</td>
+            <td>{{nat_cat_tech1.0}}</td>
+            <td>{% widthratio nat_cat_tech1.0 nat_cat_tech1.2 100 %}</td>
+            <td>{{nat_cat_tech5.0}}</td>
+            <td>{% widthratio nat_cat_tech5.0 nat_cat_tech5.2 100 %}</td>
+            <td>{{nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0}}</td>
+            <td>
+                {% widthratio nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité hors ETAP</th>
+            <td>{{nat_cat_tech4.1}}</td>
+            <td>{% widthratio nat_cat_tech4.1 nat_cat_tech4.2 100 %}</td>
+            <td>{{nat_cat_tech2.1}}</td>
+            <td>{% widthratio nat_cat_tech2.1 nat_cat_tech2.2 100 %}</td>
+            <td>{{nat_cat_tech1.1}}</td>
+            <td>{% widthratio nat_cat_tech1.1 nat_cat_tech1.2 100 %}</td>
+            <td>{{nat_cat_tech5.1}}</td>
+            <td>{% widthratio nat_cat_tech5.1 nat_cat_tech5.2 100 %}</td>
+            <td>{{nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech1.1}}</td>
+            <td>
+                {% widthratio nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech5.1 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{nat_cat_tech4.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech2.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech1.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech5.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2}}</td>
+            <td>
+                100
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+Dans ces directions, le personnel cadre représente {% widthratio nat_cat_tech4.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%, 
+celui de la catégorie maitrise {% widthratio nat_cat_tech2.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%, 
+celui de l'execution {% widthratio nat_cat_tech1.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% 
+et celui de l'execution-maitrise {% widthratio nat_cat_tech5.2 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}%.
+Parmi cette proportion {% widthratio nat_cat_tech4.0|add:nat_cat_tech2.0|add:nat_cat_tech1.0|add:nat_cat_tech5.0 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% 
+de ce personnel a exercé ses activités au sein de ces directions 
+et {% widthratio nat_cat_tech4.1|add:nat_cat_tech2.1|add:nat_cat_tech1.1|add:nat_cat_tech1.1 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% a été placé dans les
+sociétés mixtes et auprès
+des compagnies pétrolières partenaires de l'ETAP et internationales ainsi que dans les départements ministériels.
+Dans les directions à fonction technique, le personnel féminin représente  {% widthratio nat_cat_tech4.3 nat_cat_tech4.2|add:nat_cat_tech2.2|add:nat_cat_tech1.2|add:nat_cat_tech5.2  100 %}% de l'ensemble du personnel affecté dans ces
+directions.<br />
+<br />
+<b>2.5.2.Fonctions de Gestion:</b>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité à ETAP</th>
+            <td>{{nat_cat_gest4.0}}</td>
+            <td>{% widthratio nat_cat_gest4.0 nat_cat_gest4.2 100 %}</td>
+            <td>{{nat_cat_gest2.0}}</td>
+            <td>{% widthratio nat_cat_gest2.0 nat_cat_gest2.2 100 %}</td>
+            <td>{{nat_cat_gest1.0}}</td>
+            <td>{% widthratio nat_cat_gest1.0 nat_cat_gest1.2 100 %}</td>
+            <td>{{nat_cat_gest5.0}}</td>
+            <td>{% widthratio nat_cat_gest5.0 nat_cat_gest5.2 100 %}</td>
+            <td>{{nat_cat_gest4.0|add:nat_cat_gest2.0|add:nat_cat_gest1.0|add:nat_cat_gest5.0}}</td>
+            <td>
+                {% widthratio nat_cat_gest4.0|add:nat_cat_gest2.0|add:nat_cat_gest1.0|add:nat_cat_gest5.0 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité hors ETAP</th>
+            <td>{{nat_cat_gest4.1}}</td>
+            <td>{% widthratio nat_cat_gest4.1 nat_cat_gest4.2 100 %}</td>
+            <td>{{nat_cat_gest2.1}}</td>
+            <td>{% widthratio nat_cat_gest2.1 nat_cat_gest2.2 100 %}</td>
+            <td>{{nat_cat_gest1.1}}</td>
+            <td>{% widthratio nat_cat_gest1.1 nat_cat_gest1.2 100 %}</td>
+            <td>{{nat_cat_gest5.1}}</td>
+            <td>{% widthratio nat_cat_gest5.1 nat_cat_gest5.2 100 %}</td>
+            <td>{{nat_cat_gest4.1|add:nat_cat_gest2.1|add:nat_cat_gest1.1|add:nat_cat_gest1.1}}</td>
+            <td>
+                {% widthratio nat_cat_gest4.1|add:nat_cat_gest2.1|add:nat_cat_gest1.1|add:nat_cat_gest5.1 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{nat_cat_gest4.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest2.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest1.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest5.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2}}</td>
+            <td>
+                100
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+Les structures de gestion et de support exploitent {{thisyearperc.13}}% du personnel de l'ETAP.<br />
+Dans ces directions, les cadres représentent {% widthratio nat_cat_gest4.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%, 
+les agents de maitrise {% widthratio nat_cat_gest2.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%, 
+les agents de l'execution {% widthratio nat_cat_gest1.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}% 
+et ceux de l'execution-maitrise {% widthratio nat_cat_gest5.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%.<br />
+<br />
+Le personnel féminin employé dans ces structures de gestion représente {% widthratio nat_cat_gest5.3 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}% de l'ensemble du personnel affecté au sein de
+ces directions.<br />
+<br />
+<center>
+    <h3><b>Répartition de l'effectif par direction</b></h3>
+</center><br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="3">Direction</th>
+            <th scope="col" colspan="4">Cadres</th>
+            <th scope="col" colspan="4">Maitrise</th>
+            <th scope="col" colspan="4">Execution</th>
+            <th scope="col" colspan="4">Execution maitrise</th>
+            <th scope="col" rowspan="3">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for label, v_list, tot in template_list %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{label}}</th>
+            <td>{{v_list.0}}</td>
+            <td>{{v_list.1}}</td>
+            <td>{{v_list.2}}</td>
+            <td>{{v_list.3}}</td>
+            <td>{{v_list.4}}</td>
+            <td>{{v_list.5}}</td>
+            <td>{{v_list.6}}</td>
+            <td>{{v_list.7}}</td>
+            <td>{{v_list.8}}</td>
+            <td>{{v_list.9}}</td>
+            <td>{{v_list.10}}</td>
+            <td>{{v_list.11}}</td>
+            <td>{{v_list.12}}</td>
+            <td>{{v_list.13}}</td>
+            <td>{{v_list.14}}</td>
+            <td>{{v_list.15}}</td>
+            <td>{{tot}}</td>
+        </tr>
+        {% endfor %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_cm_val.1 }}</td>
+            <td>{{ p7_cf_val.1 }}</td>
+            <td>{{ p7_cm_val.0 }}</td>
+            <td>{{ p7_cf_val.0 }}</td>
+            <td>{{ p7_mm_val.1 }}</td>
+            <td>{{ p7_mf_val.1 }}</td>
+            <td>{{ p7_mm_val.0 }}</td>
+            <td>{{ p7_mf_val.0 }}</td>
+            <td>{{ p7_em_val.1 }}</td>
+            <td>{{ p7_ef_val.1 }}</td>
+            <td>{{ p7_em_val.0 }}</td>
+            <td>{{ p7_ef_val.0 }}</td>
+            <td>{{ p7_exmm_val.1 }}</td>
+            <td>{{ p7_exmf_val.1 }}</td>
+            <td>{{ p7_exmm_val.0 }}</td>
+            <td>{{ p7_exmf_val.0 }}</td>
+            <td>{{thisyearvals.1}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<br />
+<b>2.6.Par Structure de Qualification:</b><br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Ingenieurs</th>
+            <td>{{thisyear2vals.12}}</td>
+            <td>{{thisyear2perc.16}}</td>
+            <td>{{thisyear1vals.12}}</td>
+            <td>{{thisyear1perc.16}}</td>
+            <td>{{thisyearvals.12}}</td>
+            <td>{{thisyearperc.16}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Techniciens sup. et techniciens</th>
+            <td>{{thisyear2vals.13}}</td>
+            <td>{{thisyear2perc.17}}</td>
+            <td>{{thisyear1vals.13}}</td>
+            <td>{{thisyear1perc.17}}</td>
+            <td>{{thisyearvals.13}}</td>
+            <td>{{thisyearperc.17}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Execution technique</th>
+            <td>{{thisyear2vals.14}}</td>
+            <td>{{thisyear2perc.18}}</td>
+            <td>{{thisyear1vals.14}}</td>
+            <td>{{thisyear1perc.18}}</td>
+            <td>{{thisyearvals.14}}</td>
+            <td>{{thisyearperc.18}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Cadres de gestion</th>
+            <td>{{thisyear2vals.15}}</td>
+            <td>{{thisyear2perc.19}}</td>
+            <td>{{thisyear1vals.15}}</td>
+            <td>{{thisyear1perc.19}}</td>
+            <td>{{thisyearvals.15}}</td>
+            <td>{{thisyearperc.19}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Maitrise de gestion</th>
+            <td>{{thisyear2vals.16}}</td>
+            <td>{{thisyear2perc.20}}</td>
+            <td>{{thisyear1vals.16}}</td>
+            <td>{{thisyear1perc.20}}</td>
+            <td>{{thisyearvals.16}}</td>
+            <td>{{thisyearperc.20}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Execution de gestion</th>
+            <td>{{thisyear2vals.17}}</td>
+            <td>{{thisyear2perc.21}}</td>
+            <td>{{thisyear1vals.17}}</td>
+            <td>{{thisyear1perc.21}}</td>
+            <td>{{thisyearvals.17}}</td>
+            <td>{{thisyearperc.21}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{thisyear2vals.1}}</td>
+            <td>100</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>100</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+Les ingénieurs représentent {{thisyearperc.16}}% de l'effectif total de l'entreprise et les cadres de gestion
+{{thisyearperc.19}}%.<br />
+Les techniciens supérieurs et techniciens représentent {{thisyearperc.17}}% des effectifs et les agents de maitrise de
+gestion {{thisyearperc.20}}%.<br />
+<br />
+<b>2.7.Par Tranche d'Age:</b><br /><br />
+Au {{today}}, l'age moyen calculé sur l'effectif total est de {{thisyearvals.20}} contre {{thisyear1vals.20}} l'année
+précédente.<br />
+La populatio ETAP de plus de 40 ans d'age est de {{thisyearvals.26}}% au {{today}} contre {{thisyear1vals.26}}% en
+{{thisyear1vals.0}}.
+Celle de moins de 40 ans est de {{thisyearvals.25}}% contre {{thisyear1vals.25}}% une année auparavant.<br />
+<br />
+<b>2.7.1 Par tranche d'age et par genre:</b>
+<br />
+<br />
+Au {{today}}, l'age moyen de toutes catégories professionnelles confondues est de {{Average_Age_years}} et
+{{Average_Age_Months}} mois.<br />
+<br />
+<div class="w3-container">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color: #87ceeb;">
+                <th scope="col">Tranche d'age</th>
+                <th scope="col">Hommes</th>
+                <th scope="col">%</th>
+                <th scope="col">Femmes</th>
+                <th scope="col">%</th>
+                <th scope="col">Total</th>
+                <th scope="col">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">25-29 ans</th>
+                <td>{{ Age_Groupes_Hommes.0 }}</td>
+                <td>{{ HPercent.0 }}</td>
+                <td>{{ Age_Groupes_Femmes.0 }}</td>
+                <td>{{ FPercent.0 }}</td>
+                <td>{{ Genre_Total_By_Group.0 }}</td>
+                <td>{{ TPercent_By_Group.0 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">30-34 ans</th>
+                <td>{{ Age_Groupes_Hommes.1 }}</td>
+                <td>{{ HPercent.1 }}</td>
+                <td>{{ Age_Groupes_Femmes.1 }}</td>
+                <td>{{ FPercent.1 }}</td>
+                <td>{{ Genre_Total_By_Group.1 }}</td>
+                <td>{{ TPercent_By_Group.1 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">35-39 ans</th>
+                <td>{{ Age_Groupes_Hommes.2 }}</td>
+                <td>{{ HPercent.2 }}</td>
+                <td>{{ Age_Groupes_Femmes.2 }}</td>
+                <td>{{ FPercent.2 }}</td>
+                <td>{{ Genre_Total_By_Group.2 }}</td>
+                <td>{{ TPercent_By_Group.2 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">40-44 ans</th>
+                <td>{{ Age_Groupes_Hommes.3 }}</td>
+                <td>{{ HPercent.3 }}</td>
+                <td>{{ Age_Groupes_Femmes.3 }}</td>
+                <td>{{ FPercent.3 }}</td>
+                <td>{{ Genre_Total_By_Group.3 }}</td>
+                <td>{{ TPercent_By_Group.3 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">45-49 ans</th>
+                <td>{{ Age_Groupes_Hommes.4 }}</td>
+                <td>{{ HPercent.4 }}</td>
+                <td>{{ Age_Groupes_Femmes.4 }}</td>
+                <td>{{ FPercent.4 }}</td>
+                <td>{{ Genre_Total_By_Group.4 }}</td>
+                <td>{{ TPercent_By_Group.4 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">50-55 ans</th>
+                <td>{{ Age_Groupes_Hommes.5 }}</td>
+                <td>{{ HPercent.5 }}</td>
+                <td>{{ Age_Groupes_Femmes.5 }}</td>
+                <td>{{ FPercent.5 }}</td>
+                <td>{{ Genre_Total_By_Group.5 }}</td>
+                <td>{{ TPercent_By_Group.5 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">55 ans et+</th>
+                <td>{{ Age_Groupes_Hommes.6 }}</td>
+                <td>{{ HPercent.6 }}</td>
+                <td>{{ Age_Groupes_Femmes.6 }}</td>
+                <td>{{ FPercent.6 }}</td>
+                <td>{{ Genre_Total_By_Group.6 }}</td>
+                <td>{{ TPercent_By_Group.6 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">Total</th>
+                <td>{{ HTotal }}</td>
+                <td>100</td>
+                <td>{{ FTotal }}</td>
+                <td>100</td>
+                <td>{{ Total_p13 }}</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+
+
+
+{% if chart %}
+<center><img src="data:image/png;base64, {{chart|safe}}"></center>
+{% endif %}
+
+
+<br />
+<b>2.7.2.Par tranche d'age et par catégorie professionnelle:</b>
+<br />
+<br />
+Au {{today}}, la moyenne d'age de la catégorie Cadres est de {{Average_Age_Years_C}} ans et {{Average_Age_Months_C}}
+mois.
+Celle de la catégorie Maitrise est de {{Average_Age_Years_M}} ans et {{Average_Age_Months_M}} mois. La moyenne
+d'age de la catégorie
+Exécustion est de {{Average_Age_Years_E}} ans et {{Average_Age_Months_E}} mois et celle de la catégorie
+Exécution-Maitrise est de
+{{Average_Age_Years_EM}} ans et {{Average_Age_Months_EM}} mois.<br />
+
+
+<br />
+
+<div class="w3-container">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color: #87ceeb;">
+                <th scope="col">Tranche d'age</th>
+                <th scope="col">Cadres</th>
+                <th scope="col">%</th>
+                <th scope="col">Maitrise</th>
+                <th scope="col">%</th>
+                <th scope="col">Execution</th>
+                <th scope="col">%</th>
+                <th scope="col">Exec-Maitrise</th>
+                <th scope="col">%</th>
+                <th scope="col">Total</th>
+                <th scope="col">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">25-29 ans</th>
+                <td>{{ Age_Groupes_Cadres.0 }}</td>
+                <td>{{ CPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_Maitrises.0 }}</td>
+                <td>{{ MPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_Execution.0 }}</td>
+                <td>{{ EPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_EM.0 }}</td>
+                <td>{{ EMPercent_p13.0 }}</td>
+                <td>{{ Category_Total_By_Group_p13.0 }}</td>
+                <td>{{ TCPercent_p13.0 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">30-34 ans</th>
+                <td>{{ Age_Groupes_Cadres.1 }}</td>
+                <td>{{ CPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_Maitrises.1 }}</td>
+                <td>{{ MPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_Execution.1 }}</td>
+                <td>{{ EPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_EM.1 }}</td>
+                <td>{{ EMPercent_p13.1 }}</td>
+                <td>{{ Category_Total_By_Group_p13.1 }}</td>
+                <td>{{ TCPercent_p13.1 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">35-39 ans</th>
+                <td>{{ Age_Groupes_Cadres.2 }}</td>
+                <td>{{ CPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_Maitrises.2 }}</td>
+                <td>{{ MPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_Execution.2 }}</td>
+                <td>{{ EPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_EM.2 }}</td>
+                <td>{{ EMPercent_p13.2 }}</td>
+                <td>{{ Category_Total_By_Group_p13.2 }}</td>
+                <td>{{ TCPercent_p13.2 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">40-44 ans</th>
+                <td>{{ Age_Groupes_Cadres.3 }}</td>
+                <td>{{ CPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_Maitrises.3 }}</td>
+                <td>{{ MPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_Execution.3 }}</td>
+                <td>{{ EPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_EM.3 }}</td>
+                <td>{{ EMPercent_p13.3 }}</td>
+                <td>{{ Category_Total_By_Group_p13.3 }}</td>
+                <td>{{ TCPercent_p13.3 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">45-49 ans</th>
+                <td>{{ Age_Groupes_Cadres.4 }}</td>
+                <td>{{ CPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_Maitrises.4 }}</td>
+                <td>{{ MPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_Execution.4 }}</td>
+                <td>{{ EPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_EM.4 }}</td>
+                <td>{{ EMPercent_p13.4 }}</td>
+                <td>{{ Category_Total_By_Group_p13.4 }}</td>
+                <td>{{ TCPercent_p13.4 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">50-55 ans</th>
+                <td>{{ Age_Groupes_Cadres.5 }}</td>
+                <td>{{ CPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_Maitrises.5 }}</td>
+                <td>{{ MPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_Execution.5 }}</td>
+                <td>{{ EPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_EM.5 }}</td>
+                <td>{{ EMPercent_p13.5 }}</td>
+                <td>{{ Category_Total_By_Group_p13.5 }}</td>
+                <td>{{ TCPercent_p13.5 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">55 ans et+</th>
+                <td>{{ Age_Groupes_Cadres.6 }}</td>
+                <td>{{ CPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_Maitrises.6 }}</td>
+                <td>{{ MPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_Execution.6 }}</td>
+                <td>{{ EPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_EM.6 }}</td>
+                <td>{{ EMPercent_p13.6 }}</td>
+                <td>{{ Category_Total_By_Group_p13.6 }}</td>
+                <td>{{ TCPercent_p13.6 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">Total</th>
+                <td>{{ CTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ MTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ ETotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ EMTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ CatTotal_p13 }}</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% if chart %}
+<center><img src="data:image/png;base64, {{chart2|safe}}"></center>
+{% endif %}
+
+{{Age_Groupes_Cadres.0|add:Age_Groupes_Cadres.1|add:Age_Groupes_Cadres.2|add:Age_Groupes_Cadres.3|add:Age_Groupes_Cadres.4}}%
+des cadres ont
+un age entre 25 et 49 ans alors que {{Age_Groupes_Cadres.5}}% d'entre eux ont un age entre 50 et 54 ans et
+{{Age_Groupes_Cadres.6}}% d'entre eux ont
+un age supérieur à 55 ans.<br />
+<br />
+<b>2.8.Par Ancienneté:</b><br />
+<br />
+La moyenne des années d'ancienneté du personnel (claculée sur l'effectif total) est de {{Average_Anc_Years_T}} anset
+{{Average_Anc_Months_T}} mois.
+<br />
+<br />
+Près de {{half_Percent.0}} % du personnel ETAP dispose d'une ancienneté de travail à ETAP de moins de dix ans
+et{{half_Percent.1}} % environ des agents
+ont une ancienneté à ETAP supérieure à dix ans.
+<br /><br />
+<b>2.8.1.Par Ancienneté et par Catégorie Professionnelle:</b><br /><br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Ancienneté</th>
+            <th scope="col">Cadres</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Exec-Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">0-5 ans</th>
+            <td>{{ Anc_Groupes_Cadres.0 }}</td>
+            <td>{{ CPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.0 }}</td>
+            <td>{{ MPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_Execution.0 }}</td>
+            <td>{{ EPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_EM.0 }}</td>
+            <td>{{ EMPercent_p14.0 }}</td>
+            <td>{{ Category_Total_By_Group_p14.0 }}</td>
+            <td>{{ TCPercent_p14.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">5-10 ans</th>
+            <td>{{ Anc_Groupes_Cadres.1 }}</td>
+            <td>{{ CPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.1 }}</td>
+            <td>{{ MPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_Execution.1 }}</td>
+            <td>{{ EPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_EM.1 }}</td>
+            <td>{{ EMPercent_p14.1 }}</td>
+            <td>{{ Category_Total_By_Group_p14.1 }}</td>
+            <td>{{ TCPercent_p14.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">10-15 ans</th>
+            <td>{{ Anc_Groupes_Cadres.2 }}</td>
+            <td>{{ CPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.2 }}</td>
+            <td>{{ MPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_Execution.2 }}</td>
+            <td>{{ EPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_EM.2 }}</td>
+            <td>{{ EMPercent_p14.2 }}</td>
+            <td>{{ Category_Total_By_Group_p14.2 }}</td>
+            <td>{{ TCPercent_p14.2 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">15-20 ans</th>
+            <td>{{ Anc_Groupes_Cadres.3 }}</td>
+            <td>{{ CPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.3 }}</td>
+            <td>{{ MPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_Execution.3 }}</td>
+            <td>{{ EPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_EM.3 }}</td>
+            <td>{{ EMPercent_p14.3 }}</td>
+            <td>{{ Category_Total_By_Group_p14.3 }}</td>
+            <td>{{ TCPercent_p14.3 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">20-25 ans</th>
+            <td>{{ Anc_Groupes_Cadres.4 }}</td>
+            <td>{{ CPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.4 }}</td>
+            <td>{{ MPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_Execution.4 }}</td>
+            <td>{{ EPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_EM.4 }}</td>
+            <td>{{ EMPercent_p14.4 }}</td>
+            <td>{{ Category_Total_By_Group_p14.4 }}</td>
+            <td>{{ TCPercent_p14.4 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Plus de 25 ans</th>
+            <td>{{ Anc_Groupes_Cadres.5 }}</td>
+            <td>{{ CPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.5 }}</td>
+            <td>{{ MPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_Execution.5 }}</td>
+            <td>{{ EPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_EM.5 }}</td>
+            <td>{{ EMPercent_p14.5 }}</td>
+            <td>{{ Category_Total_By_Group_p14.5 }}</td>
+            <td>{{ TCPercent_p14.5 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ CTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ MTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ ETotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ EMTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ CatTotal_p14 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+La moyenne des années d'ancienneté par catégorie est comme suit:<br /<<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Catégorie</th>
+            <th scope="col">Cadres</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Exec-Maitrise</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Moyenne ancienneté</th>
+            <td>{{Average_Anc_Years_C}} ans et {{Average_Anc_Months_C}} mois</td>
+            <td>{{Average_Anc_Years_M}} ans et {{Average_Anc_Months_M}} mois</td>
+            <td>{{Average_Anc_Years_E}} ans et {{Average_Anc_Months_E}} mois</td>
+            <td>{{Average_Anc_Years_EM}} ans et {{Average_Anc_Months_EM}} mois</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<b>3.Départs à la Retraite:</b><br /><br />
+
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Année</th>
+            <th scope="col" colspan="4">Technique</th>
+            <th scope="col" colspan="4">Gestion</th>
+            <th scope="col" rowspan="2">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">Cadre</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in p15 %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{i.0}}</th>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{i.4}}</td>
+            <td>{{i.5}}</td>
+            <td>{{i.6}}</td>
+            <td>{{i.7}}</td>
+            <td>{{i.8}}</td>
+            <td>{{i.9}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><br />
+<b>4.Flux du Personnel:</b><br /><br />
+<!-- ???? -->
+<b>5.Absentéisme:</b><br /><br />
+<b>5.1.Horaire de Travail:</b><br /><br />
+
+<center><b>Horaire normal</b></center>
+<hr>
+<center>Double séance</center><br />
+<center>Du 01 Janvier au 30 Juin: Matin: 7h45 - 12h30</center>
+<center>Du 01 Septembre au 31 Décembre: Après-midi: 13h15 - 17h00</center>
+<hr>
+<center>Séance unique(Eté)</center><br />
+<center>Du 01 Juillet au 31 Août: 7h00 - 13h00</center>
+<hr>
+<center>Séance unique(Ramadan)</center><br />
+<center>7h45 - 13h45</center>
+<hr>
+<center>Nombre de jours fériés: 15 jours.</center>
+<center>Nombre de dimanches: 52 dimanches.</center>
+<hr>
+<center>Nombre de jours de travail en {{thisyearvals.0}}: 298 jours.</center>
+<hr>
+
+
+
+<b>5.2.Absentéisme:</b><br /><br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Motifs</th>
+            <th scope="col" colspan="3">Absentéisme 2021</th>
+            <th scope="col" colspan="3">Femmes</th>
+            <th scope="col" colspan="3">Hommes</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l, label in disp_list %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{label}} </th>
+            <td>{{l.0}} </td>
+            <td>{{l.1}}</td>
+            <td>{{l.2}}</td>
+            <td>{{l.3}}</td>
+            <td>{{l.4}}</td>
+            <td>{{l.5}}</td>
+            <td>{{l.6}}</td>
+            <td>{{l.7}}</td>
+            <td>{{l.8}}</td>
+
+        </tr>
+        {% endfor %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{total.0}}</td>
+            <td>{{total.1}}</td>
+            <td>{{total.2}}</td>
+            <td>{{total.3}}</td>
+            <td>{{total.4}}</td>
+            <td>{{total.5}}</td>
+            <td>{{total.6}}</td>
+            <td>{{total.7}}</td>
+            <td>{{total.8}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{{today}} le nombre total des journées d'absence a {% if thisyearvals.27 > thisyear1vals.27 %} augmenté
+{% elif thisyearvals.27 == thisyear1vals.27 %} n'a pas changé {% else %} diminué {% endif %} à celui de l'année
+{{thisyear1vals.0}}
+{% if thisyearvals.27 == thisyear1vals.27 %} ({{thisyearvals.27}} jours). {% else %} ({{thisyearvals.27}} jours contre
+{{thisyear1vals.27}} jours).{% endif %} <br /><br />
+Le taux d'absentéisme en 2021 en nombre de jours est réparti comme suit:<br /><br />
+Hommes: {{total.8}} jours soit {{percent.1}}%.<br /><br />
+Femmes: {{total.5}} jours soit {{percent.0}}%.<br /><br />
+{% if graph %}
+<center><img src="data:image/png;base64, {{graph|safe}}"></center>
+{% endif %}
+<br />
+{% if graph2 %}
+<center><img src="data:image/png;base64, {{graph2|safe}}"></center>
+{% endif %}
+<br />
+Le nombre des agents s'étant absenté au moins une fois est de {{t}} réparti comme suit:<br /><br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadres</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Femmes</th>
+            <td>{{abs_cadres.0}}</td>
+            <td>{{abs_maitrise.0}}</td>
+            <td>{{abs_execution.0}}</td>
+            <td>{{abs_em.0}}</td>
+            <td>{{total_list.0}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Hommes</th>
+            <td>{{abs_cadres.1}}</td>
+            <td>{{abs_maitrise.1}}</td>
+            <td>{{abs_execution.1}}</td>
+            <td>{{abs_em.1}}</td>
+            <td>{{total_list.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{abs_cadres.2}}</td>
+            <td>{{abs_maitrise.2}}</td>
+            <td>{{abs_execution.2}}</td>
+            <td>{{abs_em.2}}</td>
+            <td>{{total_list.2}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{% if graph3 %}
+<center><img src="data:image/png;base64, {{graph3|safe}}"></center>
+{% endif %}<br />
+Le taux d'absentéisme de {{thisyearvals.0}} est réparti comme suit:<br><br />
+{% widthratio total_list.0 total_list.2 100 %}% pour les Femmes<br />
+{% widthratio total_list.1 total_list.2 100 %}% pour les Hommes<br /><br />
+<b>Analyse du taux d'absentéisme:</b><br />
+Hypothèse:<br /><br />
+Pour un agent: 298 jours théoriques de travail<br /><br />
+Pour tout le personnel géré par ETAP: 298x{{thisyearvals.1}} = {% widthratio thisyearvals.1 1 298 %} jours
+{% endblock %}

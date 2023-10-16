@@ -1,0 +1,174 @@
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ReportingApp</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'image/ETAP_logo_transparent.png' %}" rel="icon">
+  <link href="{% static 'image/ETAP_logo_transparent.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+  <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
+  <!-- <link href="assets/css/variables-blue.css" rel="stylesheet"> -->
+  <!-- <link href="assets/css/variables-green.css" rel="stylesheet"> -->
+  <!-- <link href="assets/css/variables-orange.css" rel="stylesheet"> -->
+  <!-- <link href="assets/css/variables-purple.css" rel="stylesheet"> -->
+  <!-- <link href="assets/css/variables-red.css" rel="stylesheet"> -->
+  <!-- <link href="assets/css/variables-pink.css" rel="stylesheet"> -->
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: HeroBiz - v2.1.0
+  * Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  
+  <header id="header" class="header fixed-top" data-scrollto-offset="0">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'homepage' %}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h3>ReportingApp</h3>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        
+      </nav><!-- .navbar -->
+      {% if user.is_authenticated %}
+      <a class="btn-getstarted scrollto" href="{% url 'logout_user' %}">Déconnexion</a>
+      {% else %}
+      <a class="btn-getstarted scrollto" href="{% url 'login_user' %}">Connexion</a>
+      {% endif %}
+    </div>
+  </header><!-- End Header -->
+
+  <section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+       <img src="{% static 'assets/img/hero-carousel/hero-carousel-1.svg' %}" width="200" height="200" alt="" class="img-fluid img">
+      <h2>Bienvenue dans <span>ReportingApp</span></h2>
+      <p>Là où les tâches d'un agent RH n'ont jamais été aussi faciles.</p>
+      
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/personnel.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'list_Personnel' %}" class="stretched-link">Gestion du Personnel</a></h4>
+              <p>Ici, vous pouvez gérer les employés, vérifier leurs coordonnées, consulter les tableaux de bord et bien plus encore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/paie.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'list_Paie' %}" class="stretched-link">Gestion de Paie</a></h4>
+              <p>Ici, vous pouvez gérer les paies, vérifier les fiches de paie et bien plus encore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/absence.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'list_Absence' %}" class="stretched-link">Gestion d'Abscences</a></h4>
+              <p>Ici, vous pouvez gérer les absences, consulter des tableaux de bord et bien plus encore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/conge3.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'list_Conge' %}" class="stretched-link">Gestion de Congés</a></h4>
+              <p>Ici, vous pouvez gérer les congés, consulter des tableaux de bord et bien plus encore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/bilansocial.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'bilan_social' %}" class="stretched-link">Consultation du rapport</a></h4>
+              <p>Ici, vous pouvez consulter les rapports RH, les télécharger et bien plus encore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i><img src="{% static 'image/promotion.png' %}" class="removeImage" alt="Remove this image" /></i></div>
+              <h4><a href="{% url 'prevision' %}" class="stretched-link">Evaluation des promotions</a></h4>
+              <p>Avec la procedure manuelle c'est difficile de déterminer ceux qui mérite la promotion. Ne vous inquiétez pas nous pouvons la determiner facilement.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>À propos l'ETAP</h2>
+          <p>L’Entreprise Tunisienne d’Activités Pétrolières «ETAP» a été créée en vertu de la Loi N° 72-22 du 10 Mars 1972, elle est classée conformément au décret N° 97-564 du 31 mars 1997 parmi les établissements publics à caractère non administratif (EPNA) et considérée comme entreprise publique sous la tutelle du Ministère de l'Industrie, des Mines et de l'Energie.</p>
+        </div>
+
+ 
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock content %}

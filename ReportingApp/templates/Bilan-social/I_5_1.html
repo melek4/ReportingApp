@@ -1,0 +1,31 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+5.Absentéisme: <br>
+5.1.Horaire de travail:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_5_1 %}"active"{% endblock %}
+{% block content %}
+<center><b>Horaire normal</b></center>
+<hr>
+<center>Double séance</center><br />
+<center>Du 01 Janvier au 30 Juin: Matin: 7h45 - 12h30</center>
+<center>Du 01 Septembre au 31 Décembre: Après-midi: 13h15 - 17h00</center>
+<hr>
+<center>Séance unique(Eté)</center><br />
+<center>Du 01 Juillet au 31 Août: 7h00 - 13h00</center>
+<hr>
+<center>Séance unique(Ramadan)</center><br />
+<center>7h45 - 13h45</center>
+<hr>
+<center>Nombre de jours fériés: 15 jours.</center>
+<center>Nombre de dimanches: 52 dimanches.</center>
+<hr>
+<center>Nombre de jours de travail en {{thisyearvals.0}}: 298 jours.</center>
+<hr>
+{% endblock %}

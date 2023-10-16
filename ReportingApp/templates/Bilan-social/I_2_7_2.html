@@ -1,0 +1,162 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.7.Par tranche d'age: <br>
+2.7.2.Par tranche d'age et par vatégorie professionnelle:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_7_2 %}"active"{% endblock %}
+{% block content %}
+Au {{today}}, la moyenne d'age de la catégorie Cadres est de {{Average_Age_Years_C}} ans et {{Average_Age_Months_C}}
+mois.
+Celle de la catégorie Maitrise est de {{Average_Age_Years_M}} ans et {{Average_Age_Months_M}} mois. La moyenne
+d'age de la catégorie
+Exécustion est de {{Average_Age_Years_E}} ans et {{Average_Age_Months_E}} mois et celle de la catégorie
+Exécution-Maitrise est de
+{{Average_Age_Years_EM}} ans et {{Average_Age_Months_EM}} mois.<br />
+
+
+<br />
+
+<div class="w3-container">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color: #87ceeb;">
+                <th scope="col">Tranche d'age</th>
+                <th scope="col">Cadres</th>
+                <th scope="col">%</th>
+                <th scope="col">Maitrise</th>
+                <th scope="col">%</th>
+                <th scope="col">Execution</th>
+                <th scope="col">%</th>
+                <th scope="col">Exec-Maitrise</th>
+                <th scope="col">%</th>
+                <th scope="col">Total</th>
+                <th scope="col">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">25-29 ans</th>
+                <td>{{ Age_Groupes_Cadres.0 }}</td>
+                <td>{{ CPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_Maitrises.0 }}</td>
+                <td>{{ MPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_Execution.0 }}</td>
+                <td>{{ EPercent_p13.0 }}</td>
+                <td>{{ Age_Groupes_EM.0 }}</td>
+                <td>{{ EMPercent_p13.0 }}</td>
+                <td>{{ Category_Total_By_Group_p13.0 }}</td>
+                <td>{{ TCPercent_p13.0 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">30-34 ans</th>
+                <td>{{ Age_Groupes_Cadres.1 }}</td>
+                <td>{{ CPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_Maitrises.1 }}</td>
+                <td>{{ MPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_Execution.1 }}</td>
+                <td>{{ EPercent_p13.1 }}</td>
+                <td>{{ Age_Groupes_EM.1 }}</td>
+                <td>{{ EMPercent_p13.1 }}</td>
+                <td>{{ Category_Total_By_Group_p13.1 }}</td>
+                <td>{{ TCPercent_p13.1 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">35-39 ans</th>
+                <td>{{ Age_Groupes_Cadres.2 }}</td>
+                <td>{{ CPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_Maitrises.2 }}</td>
+                <td>{{ MPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_Execution.2 }}</td>
+                <td>{{ EPercent_p13.2 }}</td>
+                <td>{{ Age_Groupes_EM.2 }}</td>
+                <td>{{ EMPercent_p13.2 }}</td>
+                <td>{{ Category_Total_By_Group_p13.2 }}</td>
+                <td>{{ TCPercent_p13.2 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">40-44 ans</th>
+                <td>{{ Age_Groupes_Cadres.3 }}</td>
+                <td>{{ CPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_Maitrises.3 }}</td>
+                <td>{{ MPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_Execution.3 }}</td>
+                <td>{{ EPercent_p13.3 }}</td>
+                <td>{{ Age_Groupes_EM.3 }}</td>
+                <td>{{ EMPercent_p13.3 }}</td>
+                <td>{{ Category_Total_By_Group_p13.3 }}</td>
+                <td>{{ TCPercent_p13.3 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">45-49 ans</th>
+                <td>{{ Age_Groupes_Cadres.4 }}</td>
+                <td>{{ CPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_Maitrises.4 }}</td>
+                <td>{{ MPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_Execution.4 }}</td>
+                <td>{{ EPercent_p13.4 }}</td>
+                <td>{{ Age_Groupes_EM.4 }}</td>
+                <td>{{ EMPercent_p13.4 }}</td>
+                <td>{{ Category_Total_By_Group_p13.4 }}</td>
+                <td>{{ TCPercent_p13.4 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">50-55 ans</th>
+                <td>{{ Age_Groupes_Cadres.5 }}</td>
+                <td>{{ CPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_Maitrises.5 }}</td>
+                <td>{{ MPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_Execution.5 }}</td>
+                <td>{{ EPercent_p13.5 }}</td>
+                <td>{{ Age_Groupes_EM.5 }}</td>
+                <td>{{ EMPercent_p13.5 }}</td>
+                <td>{{ Category_Total_By_Group_p13.5 }}</td>
+                <td>{{ TCPercent_p13.5 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">55 ans et+</th>
+                <td>{{ Age_Groupes_Cadres.6 }}</td>
+                <td>{{ CPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_Maitrises.6 }}</td>
+                <td>{{ MPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_Execution.6 }}</td>
+                <td>{{ EPercent_p13.6 }}</td>
+                <td>{{ Age_Groupes_EM.6 }}</td>
+                <td>{{ EMPercent_p13.6 }}</td>
+                <td>{{ Category_Total_By_Group_p13.6 }}</td>
+                <td>{{ TCPercent_p13.6 }}</td>
+            </tr>
+            <tr style="background-color: #ADD8E6;">
+                <th scope="row">Total</th>
+                <td>{{ CTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ MTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ ETotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ EMTotal_p13 }}</td>
+                <td>100</td>
+                <td>{{ CatTotal_p13 }}</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% if chart %}
+<center><img src="data:image/png;base64, {{chart2|safe}}"></center>
+{% endif %}
+
+{{Age_Groupes_Cadres.0|add:Age_Groupes_Cadres.1|add:Age_Groupes_Cadres.2|add:Age_Groupes_Cadres.3|add:Age_Groupes_Cadres.4}}%
+des cadres ont
+un age entre 25 et 49 ans alors que {{Age_Groupes_Cadres.5}}% d'entre eux ont un age entre 50 et 54 ans et
+{{Age_Groupes_Cadres.6}}% d'entre eux ont
+un age supérieur à 55 ans.<br />
+<br />
+{% endblock %}

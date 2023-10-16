@@ -1,0 +1,167 @@
+{% extends 'starter.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} - Liste des paies{% endblock %}
+{% block h %}
+    <style>
+    
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    #fdp {background-color: #6082B6	;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    .wrapper3333 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+            gap: 10px;
+        }
+
+        .box13333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            
+        }
+
+        .box23333 {
+            grid-column: 2 / 3;
+            
+        }
+    .addNewRecord {
+        background-color: #3c8dbc !important;
+        color: #ffffff !important;
+        margin: 5px 5px 5px 5px;
+    }
+
+        
+    
+    </style>
+{% endblock %}
+{% block header %}
+Liste des paies
+{% endblock %}
+{% block level %}
+Gestion de paie
+{% endblock %}
+{% block status_LP %}"active"{% endblock %}
+{% block content %}
+
+<a href="{% url 'create_Paie' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter</a><br /><br />
+
+<form method="GET" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="wrapper3333">
+    <div class="box13333">
+    {% bootstrap_field paie_Filter.form.mois %}
+    </div>
+    <div class = "box23333">
+    {% bootstrap_field paie_Filter.form.anne %}
+    </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+<br /><br />
+<div>
+<table id="paie_table" class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col" style="text-align: center;">Matricule</th>
+            <th scope="col" style="text-align: center;">Mois</th>
+            <th scope="col" style="text-align: center;">Année</th>
+            <th scope="col" style="text-align: center;">Jours de présence</th>
+            <th scope="col" style="text-align: center;">Nom de la ligne</th>
+            <th scope="col" style="text-align: center;">Montant de la ligne</th>
+            <th scope="col" style="text-align: center;">Quantité de la ligne</th>
+            <th scope="col" style="text-align: center;">Type de la ligne</th>
+            <th scope="col" style="text-align: center;">Séquence</th>
+            <th scope="col" style="text-align: center;">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in paie_list %}
+        <tr>
+            <td><a href="{% url 'pers_paie_detail_view' a.matricule a.index_pk %}" type="button"
+                    class="btn btn-secondary">{{a.matricule}}</a></td>
+            <td>{{a.mois}}</td>
+            <td>{{a.anne}}</td>
+            <td>{{a.jours_pres}}</td>
+            <td>{{a.nom_ligne|title}}</td>
+            <td>{{a.mnt_ligne}}</td>
+            <td>{{a.nbre_qte}}</td>
+            <td>{{a.type_ligne}}</td>
+            <td>{{a.num_ord}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Paie' a.index_pk %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Paie' a.index_pk %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'fiche_de_paie' a.matricule a.anne a.mois %}" id="fdp" class="button"><i><img src="{% static 'image/fdp.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/Libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.js"></script>
+
+
+<script>
+   $(document).ready( function(){
+    $('#paie_table').DataTable({
+        dom: 'B<"clear">lfrtip',
+        colReorder: true,
+        buttons: [
+            {
+                extend: 'colvis',
+                collectionLayout: 'fixed columns',
+                collectionTitle: 'Contrôle de la visibilité des colonnes',
+                className: "addNewRecord",
+                text: "Visibilité des colonnes"
+            }
+        ],
+        bFilter: false,
+        "language": {
+            "lengthMenu": "Afficher _MENU_ records par page",
+            "info": "Page _PAGE_ de _PAGES_",
+            "paginate": {
+                "first":      "Premier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
+        },
+        columns: [
+            null,
+            null,
+            null,
+            null,
+            { orderable: false },
+            null,
+            null,
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+        ]
+        
+        
+    });
+   });
+</script>
+{% endblock %}

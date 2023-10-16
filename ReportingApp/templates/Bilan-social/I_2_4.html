@@ -1,0 +1,121 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.4.Par genre, catégorie et profil:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_4 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2"></th>
+            <th scope="col" colspan="4">Cadres</th>
+            <th scope="col" colspan="4">Maitrise</th>
+            <th scope="col" colspan="4">Execution</th>
+            <th scope="col" colspan="4">Exec-Maitrise</th>
+            <th scope="col" colspan="2">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">H</th>
+            <th scope="col">%</th>
+            <th scope="col">F</th>
+            <th scope="col">%</th>
+            <th scope="col">T</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel Technique</th>
+            <td>{{ p7_cm_val.0 }}</td>
+            <td>{{ p7_cm_per.0 }}</td>
+            <td>{{ p7_cf_val.0 }}</td>
+            <td>{{ p7_cf_per.0 }}</td>
+            <td>{{ p7_mm_val.0 }}</td>
+            <td>{{ p7_mm_per.0 }}</td>
+            <td>{{ p7_mf_val.0 }}</td>
+            <td>{{ p7_mf_per.0 }}</td>
+            <td>{{ p7_em_val.0 }}</td>
+            <td>{{ p7_em_per.0 }}</td>
+            <td>{{ p7_ef_val.0 }}</td>
+            <td>{{ p7_ef_per.0 }}</td>
+            <td>{{ p7_exmm_val.0 }}</td>
+            <td>{{ p7_exmm_per.0 }}</td>
+            <td>{{ p7_exmf_val.0 }}</td>
+            <td>{{ p7_exmf_per.0 }}</td>
+            <td>{{ p7_total_val.0 }}</td>
+            <td>{{ p7_totat_per.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel de Gestion</th>
+            <td>{{ p7_cm_val.1 }}</td>
+            <td>{{ p7_cm_per.1 }}</td>
+            <td>{{ p7_cf_val.1 }}</td>
+            <td>{{ p7_cf_per.1 }}</td>
+            <td>{{ p7_mm_val.1 }}</td>
+            <td>{{ p7_mm_per.1 }}</td>
+            <td>{{ p7_mf_val.1 }}</td>
+            <td>{{ p7_mf_per.1 }}</td>
+            <td>{{ p7_em_val.1 }}</td>
+            <td>{{ p7_em_per.1 }}</td>
+            <td>{{ p7_ef_val.1 }}</td>
+            <td>{{ p7_ef_per.1 }}</td>
+            <td>{{ p7_exmm_val.1 }}</td>
+            <td>{{ p7_exmm_per.1 }}</td>
+            <td>{{ p7_exmf_val.1 }}</td>
+            <td>{{ p7_exmf_per.1 }}</td>
+            <td>{{ p7_total_val.1 }}</td>
+            <td>{{ p7_totat_per.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_cm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_cf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_mm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_mf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_em_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_ef_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exmm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exmf_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_total_val.2 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<form>{% if g_p8 %}
+    <center><img src="data:image/png;base64, {{g_p8|safe}}"></center>
+    {% endif %}
+</form>
+
+<br />
+Les femmes constituent aussi {{thisyearperc.11}}% de l'ensemble du personnel à ETAP.
+Les femmes cadre à profil technique représentent #% de l'ensemble des cadres du meme profil.<br />
+<br />
+{% endblock %}

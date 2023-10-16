@@ -1,0 +1,168 @@
+{% extends 'starter.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} - Liste des absences{% endblock %}
+{% block h %}
+    <style>
+    .addNewRecord {
+        background-color: #3c8dbc !important;
+        color: #ffffff !important;
+        margin: 5px 5px 5px 5px;
+    }
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    #fdp {background-color: #6082B6	;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    .wrapper3333 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .box13333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .box23333 {
+            grid-column: 2 / 3;
+        }
+        .box33333 {
+            grid-column: 3 / 4;
+        }
+
+        .box43333 {
+            grid-column: 4 / 5;
+        }
+
+    </style>
+    {% bootstrap_javascript jquery='full' %}
+
+    {{ absence_Filter.form.media }}
+{% endblock %}
+{% block header %}
+Liste des absences
+{% endblock %}
+{% block level %}
+Gestion des absences
+{% endblock %}
+{% block status_LA %}"active"{% endblock %}
+{% block content %}
+
+<a href="{% url 'create_Absence' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter</a><br /><br />
+
+<form method="GET" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class = "wrapper3333">
+    <div class = "box13333">
+    {% bootstrap_field absence_Filter.form.abs_mat_95 %}
+    </div>
+    <div class = "box23333">
+    {% bootstrap_field absence_Filter.form.abs_nat_9 %}
+    </div>
+    <div class = "box33333">
+    {% bootstrap_field absence_Filter.form.abs_date_deb %}
+    </div>
+    <div class = "box43333">
+    {% bootstrap_field absence_Filter.form.abs_date_fin %}
+    </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form><br /><br />
+
+<table id="absence" class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col" style="text-align: center;">Matricule</th>
+            <th scope="col" style="text-align: center;">Nature absence</th>
+            <th scope="col" style="text-align: center;">Date début</th>
+            <th scope="col" style="text-align: center;">Periode début</th>
+            <th scope="col" style="text-align: center;">Date fin</th>
+            <th scope="col" style="text-align: center;">Periode fin</th>
+            <th scope="col" style="text-align: center;">Nombre jours</th>
+            <th scope="col" style="text-align: center;">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in Abs_list %}
+        <tr>
+            <td><a href="{% url 'pers_abs_detail_view' a.abs_mat_95 a.index_pk %}" type="button"
+                    class="btn btn-secondary">{{a.abs_mat_95}}</a></td>
+            <td>{{a.abs_nat_9}}</td>
+            <td>{{a.abs_date_deb}}</td>
+            <td>{{a.abs_perdeb_x}}</td>
+            <td>{{a.abs_date_fin}}</td>
+            <td>{{a.abs_perfin_x}}</td>
+            <td>{{a.abs_nbrjour_93}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Absence' a.index_pk %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Absence' a.index_pk %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/Libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.js"></script>
+
+
+<script>
+   $(document).ready( function(){
+    $('#absence').DataTable({
+        dom: 'B<"clear">lfrtip',
+        colReorder: true,
+        buttons: [
+            {
+                extend: 'colvis',
+                collectionLayout: 'fixed columns',
+                collectionTitle: 'Contrôle de la visibilité des colonnes',
+                className: "addNewRecord",
+                text: "Visibilité des colonnes"
+            }
+        ],
+        bFilter: false,
+        "language": {
+            "lengthMenu": "Afficher _MENU_ records par page",
+            "info": "Page _PAGE_ de _PAGES_",
+            "paginate": {
+                "first":      "Premier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
+        },
+        columns: [
+            null,
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+            null,
+            { orderable: false },
+        ]
+        
+    });
+   });
+</script>
+{% endblock %}

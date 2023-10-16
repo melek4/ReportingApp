@@ -1,0 +1,222 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %} - Liste de personnel{% endblock %}
+{% block h %}
+    <style>
+    .addNewRecord {
+        background-color: #3c8dbc !important;
+        color: #ffffff !important;
+        margin: 5px 5px 5px 5px;
+    }
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    .wrapper3333 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 60px 60px;
+            gap: 10px;
+        }
+
+        .box13333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 1 / 2;
+        }
+
+        .box23333 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .box33333 {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+
+        .box43333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 2 / 3;
+        }
+
+        .box53333 {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+        .box63333 {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+        
+    
+    </style>
+    {% bootstrap_javascript jquery='full' %}
+
+    {{ personnel_Filter.form.media }}
+{% endblock %}
+{% block header %}Liste de personnel{% endblock%}
+{% block level %}
+Gestion de personnel
+{% endblock %}
+{% block status_LE %}"active"{% endblock %}
+{% block content %}
+
+
+<a href="{% url 'create_Personnel' %}" class="button" style="background-color: #3c8dbc; color: #ffffff;">+ Ajouter</a><br /><br />
+
+
+<form method="GET" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class = "wrapper3333">
+    <div class = "box13333">
+    {% bootstrap_field personnel_Filter.form.pers_mat_95 %}
+    </div>
+    <div class = "box23333">
+    {% bootstrap_field personnel_Filter.form.pers_cet_9 %}
+    </div>
+    <div class = "box33333">
+    {% bootstrap_field personnel_Filter.form.pers_affect_92 %}
+    </div>
+    <div class = "box43333">
+    {% bootstrap_field personnel_Filter.form.pers_catpers_9 %}
+    </div>
+    <div class = "box53333">
+    {% bootstrap_field personnel_Filter.form.pers_natpers_9 %}
+    </div>
+    <div class = "box63333">
+    {% bootstrap_field personnel_Filter.form.pers_date_rec %}
+    </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form><br /><br />
+<div>
+<table id="personnel" class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col" width = "8%" style="text-align: center;">Matricule</th>
+            <th scope="col" width = "12%" style="text-align: center;">Date récrutement</th>
+            <th scope="col" width = "12%" style="text-align: center;">Date naissance</th>
+            <th scope="col" width = "14%" style="text-align: center;">Direction</th>
+            <th scope="col" width = "10%" style="text-align: center;">Nature agent</th>
+            <th scope="col" width = "10%" style="text-align: center;">Qualification</th>
+            <th scope="col" width = "10%" style="text-align: center;">Catégorie</th>
+            <th scope="col" width = "5%" style="text-align: center;">Nature</th>
+            <th scope="col" width = "5%" style="text-align: center;">Sexe</th>
+            <th scope="col" width = "5%" style="text-align: center;">Etat</th>
+            <th scope="col" width = "9%" style="text-align: center;">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in Person_list %}
+        <tr>
+            <td><a href="{% url 'view_pers_cong_abs' p.pers_mat_95 %}" type="button"
+                    class="btn btn-secondary">{{p.pers_mat_95}}</a></td>
+            <td>{{p.pers_date_rec}}</td>
+            <td>{{p.pers_date_nais}}</td>
+            <td>{{p.pers_affect_92|title}}</td>
+            <td>{{p.pers_naturagent_93|title}}</td>
+            <td>{{p.pers_qualif_x45|title}}</td>
+            {% if p.pers_catpers_9 == 1 %} 
+                <td>Execution</td>
+            {% elif p.pers_catpers_9 == 2 %}
+                <td>Maitrise</td>
+            {% elif p.pers_catpers_9 == 4 %}
+                <td>Cadre</td>
+            {% elif p.pers_catpers_9 == 5 %}
+                <td>Execution-maitrise</td>
+            {% else %}
+                <td>{{p.pers_catpers_9}}</td>
+            {% endif %}
+            {% if p.pers_natpers_9 == 1 %} 
+                <td>Gestion</td>
+            {% elif p.pers_natpers_9 == 2 %}
+                <td>Technique</td>
+            {% elif p.pers_natpers_9 == 3 %}
+                <td>Gestion</td>
+            {% else %}
+                <td>{{p.pers_natpers_9}}</td>
+            {% endif %}
+            <td>{{p.pers_sexe_x}}</td>
+            {% if p.pers_cet_9 == 0 %} 
+                <td>Actif</td>
+            {% elif p.pers_cet_9 == 1 %}
+                <td>Inactif temporiare</td>
+            {% elif p.pers_cet_9 == 2 %}
+                <td>Inactif</td>
+            {% else %}
+                <td>{{p.pers_cet_9}}</td>
+            {% endif %}
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Personnel' p.pers_mat_95 %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Personnel' p.pers_mat_95 %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+{% block js %}
+
+<script src="https://ajax.googleapis.com/ajax/Libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.0/af-2.4.0/b-2.2.3/b-colvis-2.2.3/cr-1.5.6/fh-3.2.3/rr-1.2.8/sc-2.0.6/datatables.min.js"></script>
+
+
+<script>
+   $(document).ready( function(){
+    $('#personnel').DataTable({
+        dom: 'B<"clear">lfrtip',
+        colReorder: true,
+        buttons: [
+            {
+                extend: 'colvis',
+                collectionLayout: 'fixed columns',
+                collectionTitle: 'Contrôle de la visibilité des colonnes',
+                className: "addNewRecord",
+                text: "Visibilité des colonnes"
+            }
+        ],
+        bFilter: false,
+        "language": {
+            "lengthMenu": "Afficher _MENU_ records par page",
+            "info": "Page _PAGE_ de _PAGES_",
+            "paginate": {
+                "first":      "Premier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
+        },
+        columns: [
+            null,
+            { orderable: false },
+            { orderable: false },
+            null,
+            null,
+            null,
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+            { orderable: false },
+        ]
+        
+    });
+   });
+</script>
+{% endblock %}

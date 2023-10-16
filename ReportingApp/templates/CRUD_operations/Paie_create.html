@@ -1,0 +1,119 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block title %} - Ajouter paie {% endblock %}
+{% load bootstrap4 %}
+{% block h %}
+    <style>
+    .wrapper3333 {
+            display: grid;
+            grid-template-columns: 1fr 1fr ;
+            grid-template-rows: 60px 60px 60px 60px 60px;
+            gap: 40px;
+        }
+
+        .box13333 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 1 / 2;
+        }
+
+        .box23333 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .box33333 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        .box43333 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row: 2 / 3;
+        }
+
+        .box53333 {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+        }
+        .box63333 {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+        }
+
+        .box73333 {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+        }
+
+        .box83333 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row: 4 / 5;
+        }
+
+        .box93333 {
+            grid-column: 1 / 2;
+            grid-row: 5 / 6;
+        }
+        .box103333 {
+            grid-column: 2 / 3;
+            grid-row: 5 / 6;
+        }
+    
+    </style>
+{% endblock %}
+{% block header %}
+Ajouter paie
+{% endblock %}
+{% block level %}
+Gestion de paie
+{% endblock %}
+{% block status_AP %}"active"{% endblock %}
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<br><br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class = "wrapper3333">
+    <div class = "box13333">
+    {% bootstrap_field form.mois %}
+    </div>
+    <div class = "box23333">
+    {% bootstrap_field form.anne %}
+    </div>
+    <div class = "box33333">
+    {% bootstrap_field form.matricule %}
+    </div>
+    <div class = "box43333">
+    {% bootstrap_field form.jours_pres %}
+    </div>
+    <div class = "box53333">
+    {% bootstrap_field form.nom_ligne %}
+    </div>
+    <div class = "box63333">
+    {% bootstrap_field form.mnt_ligne %}
+    </div>
+    <div class = "box73333">
+    {% bootstrap_field form.nbre_qte %}
+    </div>
+    <div class = "box83333">
+    {% bootstrap_field form.type_ligne %}
+    </div>
+    <div class = "box93333">
+    {% bootstrap_field form.num_ord %}
+    </div>
+    <div class = "box103333">
+    {% bootstrap_field form.index_pk %}
+    </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% endblock %}

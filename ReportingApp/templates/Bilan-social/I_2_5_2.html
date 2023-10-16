@@ -1,0 +1,178 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.5.Par direction: <br>
+2.5.2.Fonctions de gestion:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_5_2 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité à ETAP</th>
+            <td>{{nat_cat_gest4.0}}</td>
+            <td>{% widthratio nat_cat_gest4.0 nat_cat_gest4.2 100 %}</td>
+            <td>{{nat_cat_gest2.0}}</td>
+            <td>{% widthratio nat_cat_gest2.0 nat_cat_gest2.2 100 %}</td>
+            <td>{{nat_cat_gest1.0}}</td>
+            <td>{% widthratio nat_cat_gest1.0 nat_cat_gest1.2 100 %}</td>
+            <td>{{nat_cat_gest5.0}}</td>
+            <td>{% widthratio nat_cat_gest5.0 nat_cat_gest5.2 100 %}</td>
+            <td>{{nat_cat_gest4.0|add:nat_cat_gest2.0|add:nat_cat_gest1.0|add:nat_cat_gest5.0}}</td>
+            <td>
+                {% widthratio nat_cat_gest4.0|add:nat_cat_gest2.0|add:nat_cat_gest1.0|add:nat_cat_gest5.0 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">En activité hors ETAP</th>
+            <td>{{nat_cat_gest4.1}}</td>
+            <td>{% widthratio nat_cat_gest4.1 nat_cat_gest4.2 100 %}</td>
+            <td>{{nat_cat_gest2.1}}</td>
+            <td>{% widthratio nat_cat_gest2.1 nat_cat_gest2.2 100 %}</td>
+            <td>{{nat_cat_gest1.1}}</td>
+            <td>{% widthratio nat_cat_gest1.1 nat_cat_gest1.2 100 %}</td>
+            <td>{{nat_cat_gest5.1}}</td>
+            <td>{% widthratio nat_cat_gest5.1 nat_cat_gest5.2 100 %}</td>
+            <td>{{nat_cat_gest4.1|add:nat_cat_gest2.1|add:nat_cat_gest1.1|add:nat_cat_gest1.1}}</td>
+            <td>
+                {% widthratio nat_cat_gest4.1|add:nat_cat_gest2.1|add:nat_cat_gest1.1|add:nat_cat_gest5.1 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}
+            </td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{nat_cat_gest4.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest2.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest1.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest5.2}}</td>
+            <td>100</td>
+            <td>{{nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2}}</td>
+            <td>
+                100
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+Les structures de gestion et de support exploitent {{thisyearperc.13}}% du personnel de l'ETAP.<br />
+Dans ces directions, les cadres représentent {% widthratio nat_cat_gest4.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%, 
+les agents de maitrise {% widthratio nat_cat_gest2.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%, 
+les agents de l'execution {% widthratio nat_cat_gest1.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}% 
+et ceux de l'execution-maitrise {% widthratio nat_cat_gest5.2 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}%.<br />
+<br />
+Le personnel féminin employé dans ces structures de gestion représente {% widthratio nat_cat_gest5.3 nat_cat_gest4.2|add:nat_cat_gest2.2|add:nat_cat_gest1.2|add:nat_cat_gest5.2 100 %}% de l'ensemble du personnel affecté au sein de
+ces directions.<br />
+<br />
+<center>
+    <h3><b>Répartition de l'effectif par direction</b></h3>
+</center><br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="3">Direction</th>
+            <th scope="col" colspan="4">Cadres</th>
+            <th scope="col" colspan="4">Maitrise</th>
+            <th scope="col" colspan="4">Execution</th>
+            <th scope="col" colspan="4">Execution maitrise</th>
+            <th scope="col" rowspan="3">Total</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+            <th scope="col" colspan="2">Gestion</th>
+            <th scope="col" colspan="2">Technique</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+            <th scope="col">H</th>
+            <th scope="col">F</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for label, v_list, tot in template_list %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{label}}</th>
+            <td>{{v_list.0}}</td>
+            <td>{{v_list.1}}</td>
+            <td>{{v_list.2}}</td>
+            <td>{{v_list.3}}</td>
+            <td>{{v_list.4}}</td>
+            <td>{{v_list.5}}</td>
+            <td>{{v_list.6}}</td>
+            <td>{{v_list.7}}</td>
+            <td>{{v_list.8}}</td>
+            <td>{{v_list.9}}</td>
+            <td>{{v_list.10}}</td>
+            <td>{{v_list.11}}</td>
+            <td>{{v_list.12}}</td>
+            <td>{{v_list.13}}</td>
+            <td>{{v_list.14}}</td>
+            <td>{{v_list.15}}</td>
+            <td>{{tot}}</td>
+        </tr>
+        {% endfor %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_cm_val.1 }}</td>
+            <td>{{ p7_cf_val.1 }}</td>
+            <td>{{ p7_cm_val.0 }}</td>
+            <td>{{ p7_cf_val.0 }}</td>
+            <td>{{ p7_mm_val.1 }}</td>
+            <td>{{ p7_mf_val.1 }}</td>
+            <td>{{ p7_mm_val.0 }}</td>
+            <td>{{ p7_mf_val.0 }}</td>
+            <td>{{ p7_em_val.1 }}</td>
+            <td>{{ p7_ef_val.1 }}</td>
+            <td>{{ p7_em_val.0 }}</td>
+            <td>{{ p7_ef_val.0 }}</td>
+            <td>{{ p7_exmm_val.1 }}</td>
+            <td>{{ p7_exmf_val.1 }}</td>
+            <td>{{ p7_exmm_val.0 }}</td>
+            <td>{{ p7_exmf_val.0 }}</td>
+            <td>{{thisyearvals.1}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

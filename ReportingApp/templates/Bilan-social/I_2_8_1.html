@@ -1,0 +1,148 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.8.Par ancienneté: <br>
+2.8.1.Par ancienneté et par catégorie professionnelle:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_8_1 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Ancienneté</th>
+            <th scope="col">Cadres</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Exec-Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">0-5 ans</th>
+            <td>{{ Anc_Groupes_Cadres.0 }}</td>
+            <td>{{ CPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.0 }}</td>
+            <td>{{ MPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_Execution.0 }}</td>
+            <td>{{ EPercent_p14.0 }}</td>
+            <td>{{ Anc_Groupes_EM.0 }}</td>
+            <td>{{ EMPercent_p14.0 }}</td>
+            <td>{{ Category_Total_By_Group_p14.0 }}</td>
+            <td>{{ TCPercent_p14.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">5-10 ans</th>
+            <td>{{ Anc_Groupes_Cadres.1 }}</td>
+            <td>{{ CPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.1 }}</td>
+            <td>{{ MPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_Execution.1 }}</td>
+            <td>{{ EPercent_p14.1 }}</td>
+            <td>{{ Anc_Groupes_EM.1 }}</td>
+            <td>{{ EMPercent_p14.1 }}</td>
+            <td>{{ Category_Total_By_Group_p14.1 }}</td>
+            <td>{{ TCPercent_p14.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">10-15 ans</th>
+            <td>{{ Anc_Groupes_Cadres.2 }}</td>
+            <td>{{ CPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.2 }}</td>
+            <td>{{ MPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_Execution.2 }}</td>
+            <td>{{ EPercent_p14.2 }}</td>
+            <td>{{ Anc_Groupes_EM.2 }}</td>
+            <td>{{ EMPercent_p14.2 }}</td>
+            <td>{{ Category_Total_By_Group_p14.2 }}</td>
+            <td>{{ TCPercent_p14.2 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">15-20 ans</th>
+            <td>{{ Anc_Groupes_Cadres.3 }}</td>
+            <td>{{ CPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.3 }}</td>
+            <td>{{ MPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_Execution.3 }}</td>
+            <td>{{ EPercent_p14.3 }}</td>
+            <td>{{ Anc_Groupes_EM.3 }}</td>
+            <td>{{ EMPercent_p14.3 }}</td>
+            <td>{{ Category_Total_By_Group_p14.3 }}</td>
+            <td>{{ TCPercent_p14.3 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">20-25 ans</th>
+            <td>{{ Anc_Groupes_Cadres.4 }}</td>
+            <td>{{ CPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.4 }}</td>
+            <td>{{ MPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_Execution.4 }}</td>
+            <td>{{ EPercent_p14.4 }}</td>
+            <td>{{ Anc_Groupes_EM.4 }}</td>
+            <td>{{ EMPercent_p14.4 }}</td>
+            <td>{{ Category_Total_By_Group_p14.4 }}</td>
+            <td>{{ TCPercent_p14.4 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Plus de 25 ans</th>
+            <td>{{ Anc_Groupes_Cadres.5 }}</td>
+            <td>{{ CPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_Maitrises.5 }}</td>
+            <td>{{ MPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_Execution.5 }}</td>
+            <td>{{ EPercent_p14.5 }}</td>
+            <td>{{ Anc_Groupes_EM.5 }}</td>
+            <td>{{ EMPercent_p14.5 }}</td>
+            <td>{{ Category_Total_By_Group_p14.5 }}</td>
+            <td>{{ TCPercent_p14.5 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ CTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ MTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ ETotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ EMTotal_p14 }}</td>
+            <td>100</td>
+            <td>{{ CatTotal_p14 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+La moyenne des années d'ancienneté par catégorie est comme suit:<br /<<br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Catégorie</th>
+            <th scope="col">Cadres</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Exec-Maitrise</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Moyenne ancienneté</th>
+            <td>{{Average_Anc_Years_C}} ans et {{Average_Anc_Months_C}} mois</td>
+            <td>{{Average_Anc_Years_M}} ans et {{Average_Anc_Months_M}} mois</td>
+            <td>{{Average_Anc_Years_E}} ans et {{Average_Anc_Months_E}} mois</td>
+            <td>{{Average_Anc_Years_EM}} ans et {{Average_Anc_Months_EM}} mois</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{% endblock %}

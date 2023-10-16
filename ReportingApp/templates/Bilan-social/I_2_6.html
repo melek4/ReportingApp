@@ -1,0 +1,98 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.6.Par structure de qualification:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_6 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">%</th>
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Ingenieurs</th>
+            <td>{{thisyear2vals.12}}</td>
+            <td>{{thisyear2perc.16}}</td>
+            <td>{{thisyear1vals.12}}</td>
+            <td>{{thisyear1perc.16}}</td>
+            <td>{{thisyearvals.12}}</td>
+            <td>{{thisyearperc.16}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Techniciens sup. et techniciens</th>
+            <td>{{thisyear2vals.13}}</td>
+            <td>{{thisyear2perc.17}}</td>
+            <td>{{thisyear1vals.13}}</td>
+            <td>{{thisyear1perc.17}}</td>
+            <td>{{thisyearvals.13}}</td>
+            <td>{{thisyearperc.17}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Execution technique</th>
+            <td>{{thisyear2vals.14}}</td>
+            <td>{{thisyear2perc.18}}</td>
+            <td>{{thisyear1vals.14}}</td>
+            <td>{{thisyear1perc.18}}</td>
+            <td>{{thisyearvals.14}}</td>
+            <td>{{thisyearperc.18}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Cadres de gestion</th>
+            <td>{{thisyear2vals.15}}</td>
+            <td>{{thisyear2perc.19}}</td>
+            <td>{{thisyear1vals.15}}</td>
+            <td>{{thisyear1perc.19}}</td>
+            <td>{{thisyearvals.15}}</td>
+            <td>{{thisyearperc.19}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Maitrise de gestion</th>
+            <td>{{thisyear2vals.16}}</td>
+            <td>{{thisyear2perc.20}}</td>
+            <td>{{thisyear1vals.16}}</td>
+            <td>{{thisyear1perc.20}}</td>
+            <td>{{thisyearvals.16}}</td>
+            <td>{{thisyearperc.20}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Execution de gestion</th>
+            <td>{{thisyear2vals.17}}</td>
+            <td>{{thisyear2perc.21}}</td>
+            <td>{{thisyear1vals.17}}</td>
+            <td>{{thisyear1perc.21}}</td>
+            <td>{{thisyearvals.17}}</td>
+            <td>{{thisyearperc.21}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{thisyear2vals.1}}</td>
+            <td>100</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>100</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+Les ingénieurs représentent {{thisyearperc.16}}% de l'effectif total de l'entreprise et les cadres de gestion
+{{thisyearperc.19}}%.<br />
+Les techniciens supérieurs et techniciens représentent {{thisyearperc.17}}% des effectifs et les agents de maitrise de
+gestion {{thisyearperc.20}}%.<br />
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block h %}
+    <style>
+    td{
+        text-align:center;
+    }
+    th{
+        text-align:center;
+    }
+    #edit {background-color: #3c8dbc;}
+    #delete {background-color: #6F8FAF;}
+    .button {
+        padding: 8px 8px 8px 8px;
+        border-radius: 3px;
+    }   
+    </style>
+{% endblock %}
+{% block title %} - Détails personnel {% endblock %}
+{% block header %}
+Détails personnel
+{% endblock %}
+{% block level %}
+Gestion de personnel
+{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead style="background-color: #3c8dbc; color: white;">
+        <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Date récrutement</th>
+            <th scope="col">Date naissance</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Nature agent</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Nature</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="{% url 'view_pers_cong_abs' p.cong_mat_95.pers_mat_95 %}" type="button"
+                    class="btn btn-secondary">{{p.cong_mat_95.pers_mat_95}}</a></td>
+            <td>{{p.cong_mat_95.pers_date_rec}}</td>
+            <td>{{p.cong_mat_95.pers_date_nais}}</td>
+            <td>{{p.cong_mat_95.pers_affect_92|title}}</td>
+            <td>{{p.cong_mat_95.pers_naturagent_93|title}}</td>
+            <td>{{p.cong_mat_95.pers_qualif_x45|title}}</td>
+            {% if p.cong_mat_95.pers_catpers_9 == 1 %} 
+                <td>Execution</td>
+            {% elif p.cong_mat_95.pers_catpers_9 == 2 %}
+                <td>Maitrise</td>
+            {% elif p.cong_mat_95.pers_catpers_9 == 4 %}
+                <td>Cadre</td>
+            {% elif p.cong_mat_95.pers_catpers_9 == 5 %}
+                <td>Execution-maitrise</td>
+            {% else %}
+                <td>{{p.cong_mat_95.pers_catpers_9}}</td>
+            {% endif %}
+            {% if p.cong_mat_95.pers_natpers_9 == 1 %} 
+                <td>Gestion</td>
+            {% elif p.cong_mat_95.pers_natpers_9 == 2 %}
+                <td>Technique</td>
+            {% elif p.cong_mat_95.pers_natpers_9 == 3 %}
+                <td>Gestion</td>
+            {% else %}
+                <td>{{p.cong_mat_95.pers_natpers_9}}</td>
+            {% endif %}
+            <td>{{p.cong_mat_95.pers_sexe_x}}</td>
+            {% if p.cong_mat_95.pers_cet_9 == 0 %} 
+                <td>Actif</td>
+            {% elif p.cong_mat_95.pers_cet_9 == 1 %}
+                <td>Inactif temporiare</td>
+            {% elif p.cong_mat_95.pers_cet_9 == 2 %}
+                <td>Inactif</td>
+            {% else %}
+                <td>{{p.cong_mat_95.pers_cet_9}}</td>
+            {% endif %}
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Personnel' p.cong_mat_95.pers_mat_95 %}" id="edit" class="button"><i><img src="{% static 'image/modifier.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                    <a href="{% url 'delete_Personnel' p.cong_mat_95.pers_mat_95 %}" id="delete" class="button"><i><img src="{% static 'image/delete.png' %}" class="removeImage" alt="Remove this image" /></i></a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi:<br />
+2.Répartition du personnel: <br>
+2.1.Par catégorie professionnelle:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_1 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Effectifs</th>
+            <th scope="col" rowspan="2">Cadre</th>
+            <th scope="col" rowspan="2">Maitrise</th>
+            <th scope="col" rowspan="2">Execution</th>
+            <th scope="col" rowspan="2">Execution maitrise</th>
+            <th scope="col" colspan="3">TOTAL</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">{{thisyearvals.0}}</th>
+            <th scope="col">{{thisyear1vals.0}}</th>
+            <th scope="col">{{thisyear2vals.0}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel exerçant à ETAP</th>
+            <td>{{nat_cat4.0|add:nat_cat4.3|add:nat_cat4.5}}</td>
+            <td>{{nat_cat2.0|add:nat_cat2.3|add:nat_cat2.5}}</td>
+            <td>{{nat_cat1.0|add:nat_cat1.3|add:nat_cat1.5}}</td>
+            <td>{{nat_cat5.0|add:nat_cat5.3|add:nat_cat5.5}}</td>
+            <td>{{thisyearvals.3|add:thisyearvals.7|add:thisyearvals.6}}</td>
+            <td>{{thisyear1vals.3|add:thisyear1vals.7|add:thisyear1vals.6}}</td>
+            <td>{{thisyear2vals.3|add:thisyear2vals.7|add:thisyear2vals.6}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel exerçant hors ETAP</th>
+            <td>{{nat_cat4.1|add:nat_cat4.2}}</td>
+            <td>{{nat_cat2.1|add:nat_cat2.2}}</td>
+            <td>{{nat_cat1.1|add:nat_cat1.2}}</td>
+            <td>{{nat_cat5.1|add:nat_cat5.2}}</td>
+            <td>{{thisyearvals.4|add:thisyearvals.5}}</td>
+            <td>{{thisyear1vals.4|add:thisyear1vals.5}}</td>
+            <td>{{thisyear2vals.4|add:thisyear2vals.5}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{thisyearvals.8}}</td>
+            <td>{{thisyearvals.9}}</td>
+            <td>{{thisyearvals.10}}</td>
+            <td>{{thisyearvals.11}}</td>
+            <td>{{thisyearvals.1}}</td>
+            <td>{{thisyear1vals.1}}</td>
+            <td>{{thisyear2vals.1}}</td>
+        </tr>
+    </tbody>
+</table>
+Les cadres représentent {{thisyearperc.0}}% en {{thisyearvals.0}} ({{thisyear1perc.0}}% en {{thisyear1vals.0}} et
+{{thisyear2perc.0}}% en {{thisyear2vals.0}}), les agaents de maitrise {{thisyearperc.1}}%, les agents d'execution
+{{thisyearperc.2}}% et les agents d'execution maitrise {{thisyearperc.3}}%.<br />
+La proportion des cadres exerçant effectivement à ETAP par rpport à l'ensemble des effectifs de cette catégorie est fixé
+à {% widthratio nat_cat4.0|add:nat_cat4.3|add:nat_cat4.5 thisyearvals.8 100 %}%, celle de la
+maitrise à {% widthratio nat_cat2.0|add:nat_cat2.3|add:nat_cat2.5 thisyearvals.9 100 %}%, celle de l'execution à
+{%widthratio nat_cat1.0|add:nat_cat1.3|add:nat_cat1.5 thisyearvals.10 100 %}%
+et celle de l'execution-maitrise est fixée à
+{% widthratio nat_cat5.0|add:nat_cat5.3|add:nat_cat5.5 thisyearvals.11 100 %}%.
+{% endblock %}

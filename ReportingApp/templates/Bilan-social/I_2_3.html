@@ -1,0 +1,75 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+2.Répartition du personnel: <br>
+2.3.Par catégorie et par profil:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_2_3 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadre</th>
+            <th scope="col">%</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Execution</th>
+            <th scope="col">%</th>
+            <th scope="col">Exec-Maitrise</th>
+            <th scope="col">%</th>
+            <th scope="col">Total</th>
+            <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel Technique</th>
+            <td>{{ p7_c_val.0 }}</td>
+            <td>{{ p7_c_per.0 }}</td>
+            <td>{{ p7_m_val.0 }}</td>
+            <td>{{ p7_m_per.0 }}</td>
+            <td>{{ p7_e_val.0 }}</td>
+            <td>{{ p7_e_per.0 }}</td>
+            <td>{{ p7_exm_val.0 }}</td>
+            <td>{{ p7_exm_per.0 }}</td>
+            <td>{{ p7_total_val.0 }}</td>
+            <td>{{ p7_totat_per.0 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Personnel de Gestion</th>
+            <td>{{ p7_c_val.1 }}</td>
+            <td>{{ p7_c_per.1 }}</td>
+            <td>{{ p7_m_val.1 }}</td>
+            <td>{{ p7_m_per.1 }}</td>
+            <td>{{ p7_e_val.1 }}</td>
+            <td>{{ p7_e_per.1 }}</td>
+            <td>{{ p7_exm_val.1 }}</td>
+            <td>{{ p7_exm_per.1 }}</td>
+            <td>{{ p7_total_val.1 }}</td>
+            <td>{{ p7_totat_per.1 }}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{ p7_c_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_m_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_e_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_exm_val.2 }}</td>
+            <td>100</td>
+            <td>{{ p7_total_val.2 }}</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{{p7_totat_per.0}}% du personnel sont des techniciens et {{p7_totat_per.1}}% sont des gestionnaires.<br />
+<br />
+{% endblock %}

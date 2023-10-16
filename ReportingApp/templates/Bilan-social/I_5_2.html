@@ -1,0 +1,131 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block header %}
+I.Emploi: <br>
+5.Absentéisme: <br>
+5.2.Absentéisme:
+{% endblock %}
+{% block level %}
+View
+{% endblock %}
+{% block status_I_5_2 %}"active"{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col" rowspan="2">Motifs</th>
+            <th scope="col" colspan="3">Absentéisme 2021</th>
+            <th scope="col" colspan="3">Femmes</th>
+            <th scope="col" colspan="3">Hommes</th>
+        </tr>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+            <th scope="col">Eff</th>
+            <th scope="col">Nb. Cas</th>
+            <th scope="col">Nb. Jrs</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l, label in disp_list %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">{{label}} </th>
+            <td>{{l.0}} </td>
+            <td>{{l.1}}</td>
+            <td>{{l.2}}</td>
+            <td>{{l.3}}</td>
+            <td>{{l.4}}</td>
+            <td>{{l.5}}</td>
+            <td>{{l.6}}</td>
+            <td>{{l.7}}</td>
+            <td>{{l.8}}</td>
+
+        </tr>
+        {% endfor %}
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{total.0}}</td>
+            <td>{{total.1}}</td>
+            <td>{{total.2}}</td>
+            <td>{{total.3}}</td>
+            <td>{{total.4}}</td>
+            <td>{{total.5}}</td>
+            <td>{{total.6}}</td>
+            <td>{{total.7}}</td>
+            <td>{{total.8}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{{today}} le nombre total des journées d'absence a {% if thisyearvals.27 > thisyear1vals.27 %} augmenté
+{% elif thisyearvals.27 == thisyear1vals.27 %} n'a pas changé {% else %} diminué {% endif %} à celui de l'année
+{{thisyear1vals.0}}
+{% if thisyearvals.27 == thisyear1vals.27 %} ({{thisyearvals.27}} jours). {% else %} ({{thisyearvals.27}} jours contre
+{{thisyear1vals.27}} jours).{% endif %} <br /><br />
+Le taux d'absentéisme en 2021 en nombre de jours est réparti comme suit:<br /><br />
+Hommes: {{total.8}} jours soit {{percent.1}}%.<br /><br />
+Femmes: {{total.5}} jours soit {{percent.0}}%.<br /><br />
+{% if graph %}
+<center><img src="data:image/png;base64, {{graph|safe}}"></center>
+{% endif %}
+<br />
+{% if graph2 %}
+<center><img src="data:image/png;base64, {{graph2|safe}}"></center>
+{% endif %}
+<br />
+Le nombre des agents s'étant absenté au moins une fois est de {{t}} réparti comme suit:<br /><br />
+<table class="table table-striped">
+    <thead>
+        <tr style="background-color: #87ceeb;">
+            <th scope="col"></th>
+            <th scope="col">Cadres</th>
+            <th scope="col">Maitrise</th>
+            <th scope="col">Execution</th>
+            <th scope="col">Execution maitrise</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Femmes</th>
+            <td>{{abs_cadres.0}}</td>
+            <td>{{abs_maitrise.0}}</td>
+            <td>{{abs_execution.0}}</td>
+            <td>{{abs_em.0}}</td>
+            <td>{{total_list.0}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Hommes</th>
+            <td>{{abs_cadres.1}}</td>
+            <td>{{abs_maitrise.1}}</td>
+            <td>{{abs_execution.1}}</td>
+            <td>{{abs_em.1}}</td>
+            <td>{{total_list.1}}</td>
+        </tr>
+        <tr style="background-color: #ADD8E6;">
+            <th scope="row">Total</th>
+            <td>{{abs_cadres.2}}</td>
+            <td>{{abs_maitrise.2}}</td>
+            <td>{{abs_execution.2}}</td>
+            <td>{{abs_em.2}}</td>
+            <td>{{total_list.2}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{% if graph3 %}
+<center><img src="data:image/png;base64, {{graph3|safe}}"></center>
+{% endif %}<br />
+Le taux d'absentéisme de {{thisyearvals.0}} est réparti comme suit:<br><br />
+{% widthratio total_list.0 total_list.2 100 %}% pour les Femmes<br />
+{% widthratio total_list.1 total_list.2 100 %}% pour les Hommes<br /><br />
+<b>Analyse du taux d'absentéisme:</b><br />
+Hypothèse:<br /><br />
+Pour un agent: 298 jours théoriques de travail<br /><br />
+Pour tout le personnel géré par ETAP: 298x{{thisyearvals.1}} = {% widthratio thisyearvals.1 1 298 %} jours
+{% endblock %}

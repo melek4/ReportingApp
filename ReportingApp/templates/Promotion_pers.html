@@ -1,0 +1,55 @@
+{% extends 'starter.html' %}
+{% load static %}
+
+{% block title %} - Détails personnel{% endblock %}
+{% block header %}
+Détails personnel
+{% endblock %}
+{% block level %}
+Gestion de personnel
+{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Date récrutement</th>
+            <th scope="col">Date naissance</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Nature agent</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Nature</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for p in plist %}
+        <tr>
+            <td>{{p.pers_mat_95}}</td>
+            <td>{{p.pers_date_rec}}</td>
+            <td>{{p.pers_date_nais}}</td>
+            <td>{{p.pers_affect_92.code_direction}}</td>
+            <td>{{p.pers_naturagent_93.natag_code_93}}</td>
+            <td>{{p.pers_qualif_x45}}</td>
+            <td>{{p.pers_catpers_9}}</td>
+            <td>{{p.pers_natpers_9}}</td>
+            <td>{{p.pers_sexe_x}}</td>
+            <td>{{p.pers_cet_9}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url 'update_Personnel' p.pers_mat_95 %}" type="button"
+                        class="btn btn-secondary">Modifier</a>
+                    <a href="{% url 'delete_Personnel' p.pers_mat_95 %}" type="button"
+                        class="btn btn-secondary">Supprimer</a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

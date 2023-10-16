@@ -1,0 +1,24 @@
+{% extends 'starter.html' %}
+{% load static %}
+{% block title %} - Supprimer absence{% endblock %}
+{% block header %}
+Supprimer absence
+{% endblock %}
+{% block level %}
+Gestion des absences
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    <!-- Create a Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        Supprimer cet élément ?
+        <div class="content container-fluid">
+            <button type="submit" class="btn btn-primary">Supprimer</button>
+            <a type="button" class="btn btn-primary" href="/list_Personnel/">Annuler</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
